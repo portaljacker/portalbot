@@ -1,0 +1,25 @@
+{
+  "name": "portalbot",
+  "version": "0.1.0-*",
+  "description": "Portaljacker's bot for Discord.",
+  "copyright": "Portaljacker 2017",
+  "authors": ["Portaljacker"],
+
+  "buildOptions": {
+    "emitEntryPoint": true
+  },
+
+  "dependencies": {
+    "Discord.Net.WebSocket": "1.0.0-rc-00546",
+    "Microsoft.NETCore.App": {
+      "type": "platform",
+      "version": "1.1.0"
+    }
+  },
+
+  "frameworks": {
+    "netcoreapp1.0": {
+      "imports": "dnxcore50"
+    }
+  },
+}
