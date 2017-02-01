@@ -19,7 +19,7 @@ namespace portalbot
             _client = new DiscordSocketClient();
             _commands = new CommandService();
 
-            string token = "aaabbbcc";
+            string token = System.Environment.GetEnvironmentVariable("DISCORD_BOT_TOKEN");
 
             _map = new DependencyMap();
 
