@@ -1,6 +1,7 @@
 ﻿using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using System;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -16,12 +17,14 @@ namespace portalbot
 
         public async Task Run()
         {
-            _client = new DiscordSocketClient();
-            _commands = new CommandService();
-
             string token = System.Environment.GetEnvironmentVariable("DISCORD_BOT_TOKEN");
 
+            _client = new DiscordSocketClient();
+            _commands = new CommandService();
             _map = new DependencyMap();
+            _map.Add(_client);
+            _map.Add(_commands);
+            _map.Add(new Random());
 
             await InstallCommands();
 
