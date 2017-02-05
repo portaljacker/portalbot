@@ -7,12 +7,7 @@ namespace portalbot.Commands
 {
     public class AskModule : ModuleBase
     {
-        private List<string> _answers;
-        private readonly Random _random;
-
-        public AskModule(Random random)
-        {
-            _answers = new List<string>
+        private List<string> _answers = new List<string>
             {
                 "It is certain.",
                 "It is decidedly so.",
@@ -35,6 +30,10 @@ namespace portalbot.Commands
                 "Outlook not so good.",
                 "Very doubtful."
             };
+        private readonly Random _random;
+
+        public AskModule(Random random)
+        {
             _random = random;
         }
 

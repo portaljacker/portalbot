@@ -17,7 +17,7 @@ namespace portalbot
 
         public async Task Run()
         {
-            string token = System.Environment.GetEnvironmentVariable("DISCORD_BOT_TOKEN");
+            string token = Environment.GetEnvironmentVariable("DISCORD_BOT_TOKEN");
 
             _client = new DiscordSocketClient();
             _commands = new CommandService();
