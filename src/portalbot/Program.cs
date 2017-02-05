@@ -60,7 +60,12 @@ namespace portalbot
 
             var result = await _commands.ExecuteAsync(context, argPos, _map);
             if (!result.IsSuccess)
+            {
+                // Don't report when command doesn't exist.
+                if (result is SearchResult)
+                    return;
                 await context.Channel.SendMessageAsync(result.ErrorReason);
+            }
         }
     }
 }
