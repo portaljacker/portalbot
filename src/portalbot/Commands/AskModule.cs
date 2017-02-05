@@ -40,7 +40,7 @@ namespace portalbot.Commands
         [Command("ask"), Summary("Ask a question.")]
         public async Task Ask([Remainder, Summary("Your question")] string question)
         {
-            var answer = _answers[_random.Next(21)];
+            var answer = _answers[_random.Next(20)];
             var userInfo = Context.User;
             await ReplyAsync($"{userInfo.Username} asked, \"{question}\" Magic 8-ball says: ***\"{answer}\"***");
         }
