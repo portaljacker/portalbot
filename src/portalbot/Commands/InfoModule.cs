@@ -5,13 +5,15 @@ namespace Portalbot.Commands
 {
     public class InfoModule : ModuleBase
     {
-        [Command("ping"), Summary("pong!.")]
+        [Command("ping")]
+        [Summary("pong!")]
         public async Task Ping()
         {
             await ReplyAsync("pong!");
         }
 
-        [Command("say"), Summary("Echos a message.")]
+        [Command("say")]
+        [Summary("Echos a message.")]
         public async Task Say([Remainder, Summary("The text to echo")] string echo)
         {
             var userInfo = Context.User;
