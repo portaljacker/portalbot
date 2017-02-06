@@ -1,7 +1,7 @@
 ﻿using Discord.Commands;
 using System.Threading.Tasks;
 
-namespace portalbot.Commands
+namespace Portalbot.Commands
 {
     public class InfoModule : ModuleBase
     {

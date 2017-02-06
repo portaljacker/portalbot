@@ -3,11 +3,21 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace portalbot.Commands
+namespace Portalbot.Commands
 {
     public class AskModule : ModuleBase
     {
-        private List<string> _answers = new List<string>
+        private readonly Random _random;
+
+        public AskModule(Random random)
+        {
+            _random = random;
+        }
+
+        [Command("ask"), Summary("Ask a question.")]
+        public async Task Ask([Remainder, Summary("Your question")] string question)
+        {
+            var answers = new List<string>
             {
                 "It is certain.",
                 "It is decidedly so.",
@@ -30,19 +40,9 @@ namespace portalbot.Commands
                 "Outlook not so good.",
                 "Very doubtful."
             };
-        private readonly Random _random;
-
-        public AskModule(Random random)
-        {
-            _random = random;
-        }
-
-        [Command("ask"), Summary("Ask a question.")]
-        public async Task Ask([Remainder, Summary("Your question")] string question)
-        {
-            var answer = _answers[_random.Next(20)];
+            var answer = answers[_random.Next(20)];
             var userInfo = Context.User;
-            await ReplyAsync($"{userInfo.Username} asked, \"{question}\" Magic 8-ball says: ***\"{answer}\"***");
+            await ReplyAsync($"{userInfo.Username} asked, \"{question}\" Magic 8-ball says: _**\"{answer}\"**_");
         }
     }
 }

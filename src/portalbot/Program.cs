@@ -5,7 +5,7 @@ using System;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace portalbot
+namespace Portalbot
 {
     class Program
     {
