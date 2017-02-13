@@ -9,7 +9,7 @@ namespace portalbot.Commands
 {
     public class WeatherModule : ModuleBase
     {
-        private static readonly Regex ValidCityState = new Regex(@"^[\p{L}\p{Mn}]+(?:[\s-][a-zA-Z]+)*(?:(\,|(\,\s))?[\p{L}\p{Mn}]{2,})$", RegexOptions.IgnoreCase);
+        private static readonly Regex ValidCityState = new Regex(@"^[\p{L}\p{Mn}]+(?:[\s-][\p{L}\p{Mn}]+)*(?:(\,|(\,\s))?[\p{L}\p{Mn}]{2,})$", RegexOptions.IgnoreCase);
 
         private readonly GoogleGeocodeService _geocoder;
         private readonly DarkSkyService _darkSky;
