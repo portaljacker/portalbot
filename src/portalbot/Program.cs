@@ -1,29 +1,39 @@
-﻿using Discord;
+﻿using DarkSky.Services;
+using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using GoogleGeoCoderCore;
 using System;
 using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Portalbot
 {
-    class Program
+    public class Program
     {
         private CommandService _commands;
         private DiscordSocketClient _client;
         private DependencyMap _map;
+        private GoogleGeocodeService _geocoder;
+        private DarkSkyService _darkSky;
 
-        static void Main(string[] args) => new Program().Run().GetAwaiter().GetResult();
+        public static void Main(string[] args) => new Program().Run().GetAwaiter().GetResult();
 
         public async Task Run()
         {
-            string token = Environment.GetEnvironmentVariable("DISCORD_BOT_TOKEN");
+            var token = Environment.GetEnvironmentVariable("DISCORD_BOT_TOKEN");
+            var darkSkySecretKey = Environment.GetEnvironmentVariable("DARK_SKY_SECRET_KEY");
 
             _client = new DiscordSocketClient();
             _commands = new CommandService();
+            _geocoder = new GoogleGeocodeService();
+            _darkSky = new DarkSkyService(darkSkySecretKey);
+
             _map = new DependencyMap();
             _map.Add(_client);
             _map.Add(_commands);
+            _map.Add(_geocoder);
+            _map.Add(_darkSky);
             _map.Add(new Random());
 
             await InstallCommands();
@@ -52,7 +62,7 @@ namespace Portalbot
             var message = messageParam as SocketUserMessage;
             if (message == null) return;
 
-            int argPos = 0;
+            var argPos = 0;
 
             if (!message.HasCharPrefix('!', ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos)) return;
 

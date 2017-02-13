@@ -10,8 +10,10 @@
   },
 
   "dependencies": {
+    "DarkSkyCore": "1.4.0",
     "Discord.Net.Commands": "1.0.0-rc-00588",
     "Discord.Net.WebSocket": "1.0.0-rc-00588",
+    "GoogleGeoCoderCore": "1.0.0",
     "Microsoft.NETCore.App": {
       "type": "platform",
       "version": "1.1.0"
@@ -22,5 +24,5 @@
     "netcoreapp1.1": {
       "imports": "dnxcore50"
     }
-  },
+  }
 }
