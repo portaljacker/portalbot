@@ -43,8 +43,8 @@ namespace portalbot.Commands
             var forecast = _darkSky.GetForecast(location.Result.Latitude, location.Result.Longitude);
             var currently = forecast.Result.Response.Currently;
 
-            if (currently.ApparentTemperature != null && currently.WindSpeed != null)
-                await ReplyAsync($"Weather in ***{city}*** is currently ***{(int)currently.ApparentTemperature}°F***, with wind speed of ***{(int)currently.WindSpeed}mph***.");
+            if (currently.Temperature != null && currently.WindSpeed != null)
+                await ReplyAsync($"Weather in ***{city}*** is currently ***{(int)currently.Temperature}°F***, with wind speed of ***{(int)currently.WindSpeed}mph***.");
         }
 
         private async Task<Location> GetLocation(string address)
