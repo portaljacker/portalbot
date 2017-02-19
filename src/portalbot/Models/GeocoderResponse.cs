@@ -1,4 +1,4 @@
-﻿namespace portalbot.Classes
+﻿namespace portalbot.Models
 {
     public class GeocoderResponse
     {
