@@ -4,9 +4,12 @@ using Discord.Commands;
 using GoogleGeoCoderCore;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using DarkSky.Models;
 
 namespace portalbot.Commands
 {
+    [Group("weather")]
+    [Alias("woppy")]
     public class WeatherModule : ModuleBase
     {
         private static readonly Regex ValidCityState = new Regex(@"^[\p{L}\p{Mn}]+(?:[\s-][\p{L}\p{Mn}]+)*(?:(\,|(\,\s))?[\p{L}\p{Mn}]{2,})$", RegexOptions.IgnoreCase);
@@ -20,10 +23,35 @@ namespace portalbot.Commands
             _darkSky = darkSky;
         }
 
-        [Command("weather")]
-        [Summary("Echos a message.")]
-        [Alias("woppy")]
+        [Command]
+        [Alias("f", "F")]
+        [Summary("Get the weather for the selected city.")]
         public async Task Weather([Remainder, Summary("City (State optional")] string city)
+        {
+            if (!ValidCityState.IsMatch(city))
+            {
+                await ReplyAsync("Invalid city format, please try again. (eg. Washington, DC)");
+                return;
+            }
+
+            var location = await GetLocation(city);
+
+            const double tolerance = 0.001f;
+            if (Math.Abs(location.Latitude) < tolerance && Math.Abs(location.Longitude) < tolerance)
+            {
+                await ReplyAsync("City not found, please try again.");
+                return;
+            }
+
+            var forecast = await GetWeather(location);
+
+            await SendWeather(city, forecast.Response.Currently);
+        }
+
+        [Command("c")]
+        [Alias("C")]
+        [Summary("Get the real weather for the selected city.")]
+        public async Task RealWeather([Remainder, Summary("City (State optional")] string city)
         {
             if (!ValidCityState.IsMatch(city))
             {
@@ -31,26 +59,48 @@ namespace portalbot.Commands
                 return;
             }
 
-            var location = GetLocation(city);
+            var location = await GetLocation(city);
 
             const double tolerance = 0.001f;
-            if (Math.Abs(location.Result.Latitude) < tolerance && Math.Abs(location.Result.Longitude) < tolerance)
+            if (Math.Abs(location.Latitude) < tolerance && Math.Abs(location.Longitude) < tolerance)
             {
                 await ReplyAsync("City not found, please try again.");
                 return;
             }
 
-            var forecast = _darkSky.GetForecast(location.Result.Latitude, location.Result.Longitude);
-            var currently = forecast.Result.Response.Currently;
+            var forecast = await GetWeather(location, true);
 
-            if (currently.Temperature != null && currently.WindSpeed != null)
-                await ReplyAsync($"Weather in ***{city}*** is currently ***{(int)currently.Temperature}°F***, with wind speed of ***{(int)currently.WindSpeed}mph***.");
+            await SendWeather(city, forecast.Response.Currently, true);
         }
 
         private async Task<Location> GetLocation(string address)
         {
-            var result = await _geocoder.GeocodeLocation(address);
-            return result;
+            return await _geocoder.GeocodeLocation(address);
+        }
+
+        private async Task<DarkSkyResponse> GetWeather(Location location, bool canada = false)
+        {
+            if (canada)
+            {
+                return await _darkSky.GetForecast(location.Latitude, location.Longitude,
+                    new DarkSkyService.OptionalParameters()
+                    {
+                        MeasurementUnits = "ca"
+                    });
+            }
+            else
+                return await _darkSky.GetForecast(location.Latitude, location.Longitude);
+        }
+
+        private async Task SendWeather(string city, DataPoint currently, bool canada = false)
+        {
+            if (currently.Temperature != null && currently.WindSpeed != null)
+            {
+                if (canada)
+                    await ReplyAsync($"Weather in ***{city}*** is currently ***{(int)currently.Temperature}° C***, with wind speed of ***{(int)currently.WindSpeed} km/h***.");
+                else
+                    await ReplyAsync($"Weather in ***{city}*** is currently ***{(int)currently.Temperature}° F***, with wind speed of ***{(int)currently.WindSpeed} mph***.");
+            }
         }
     }
 }
