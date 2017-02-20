@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Portaljacker's bot for Discord.</Description>
+    <Copyright>Portaljacker 2017</Copyright>
+    <VersionPrefix>0.2.0</VersionPrefix>
+    <Authors>Portaljacker</Authors>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <AssemblyName>portalbot</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <PackageId>portalbot</PackageId>
+    <RuntimeFrameworkVersion>1.1.0</RuntimeFrameworkVersion>
+    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DarkSkyCore" Version="1.4.0" />
+    <PackageReference Include="Discord.Net.Commands" Version="1.0.0-rc-00595" />
+    <PackageReference Include="Discord.Net.WebSocket" Version="1.0.0-rc-00595" />
+    <PackageReference Include="GoogleGeoCoderCore" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>
