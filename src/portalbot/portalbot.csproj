@@ -20,7 +20,6 @@
     <PackageReference Include="DarkSkyCore" Version="1.4.0" />
     <PackageReference Include="Discord.Net.Commands" Version="1.0.0-rc-00595" />
     <PackageReference Include="Discord.Net.WebSocket" Version="1.0.0-rc-00595" />
-    <PackageReference Include="GoogleGeoCoderCore" Version="1.0.0" />
   </ItemGroup>
 
 </Project>

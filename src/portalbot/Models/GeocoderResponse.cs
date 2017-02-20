@@ -1,8 +1,10 @@
-﻿namespace portalbot.Models
+﻿using Newtonsoft.Json;
+
+namespace portalbot.Models
 {
     public class GeocoderResponse
     {
-        public GeocoderResult Results { get; set; }
+        public GeocoderResult[] Results { get; set; }
 
         public string Status { get; set; }
     }
@@ -11,12 +13,15 @@
     {
         public string[] Types { get; set; }
 
+        [JsonProperty(PropertyName = "formatted_address")]
         public string FormattedAddress { get; set; }
 
+        [JsonProperty(PropertyName = "address_components")]
         public AddressComponent[] AddressComponents { get; set; }
 
         public bool PartialMatch { get; set; }
 
+        [JsonProperty(PropertyName = "place_id")]
         public string PlaceId { get; set; }
 
         public string[] PostCodeLocalities { get; set; }
@@ -26,8 +31,10 @@
 
     public class AddressComponent
     {
+        [JsonProperty(PropertyName = "short_name")]
         public string ShortName { get; set; }
 
+        [JsonProperty(PropertyName = "long_name")]
         public string LongName { get; set; }
 
         public string[] PostCodeLocalities { get; set; }
@@ -39,6 +46,7 @@
     {
         public LatLng Location { get; set; }
 
+        [JsonProperty(PropertyName = "location_type")]
         public string LocationType { get; set; }
 
         public LatLngBounds Viewport { get; set; }

@@ -2,8 +2,8 @@
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
-using GoogleGeoCoderCore;
 using System;
+using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -14,7 +14,7 @@ namespace Portalbot
         private CommandService _commands;
         private DiscordSocketClient _client;
         private DependencyMap _map;
-        private GoogleGeocodeService _geocoder;
+        private HttpClient _httpClient;
         private DarkSkyService _darkSky;
 
         public static void Main(string[] args) => new Program().Run().GetAwaiter().GetResult();
@@ -26,13 +26,13 @@ namespace Portalbot
 
             _client = new DiscordSocketClient();
             _commands = new CommandService();
-            _geocoder = new GoogleGeocodeService();
+            _httpClient = new HttpClient();
             _darkSky = new DarkSkyService(darkSkySecretKey);
 
             _map = new DependencyMap();
             _map.Add(_client);
             _map.Add(_commands);
-            _map.Add(_geocoder);
+            _map.Add(_httpClient);
             _map.Add(_darkSky);
             _map.Add(new Random());
 
