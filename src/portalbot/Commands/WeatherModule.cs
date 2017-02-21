@@ -55,6 +55,13 @@ namespace portalbot.Commands
             var cityString = "";
             var cityType = location.Results[0].Types;
             var provinceType = new[] { "administrative_area_level_1", "political" };
+            var stateType = new[] { "administrative_area_level_1", "establishment", "point_of_interest", "political" };
+            var countryType = new[] { "country", "political" };
+            if (cityType.SequenceEqual(provinceType) || cityType.SequenceEqual(stateType) || cityType.SequenceEqual(countryType))
+            {
+                await ReplyAsync("Location entered is not a city (or is not specific enough).");
+                return;
+            }
             foreach (var addressComponent in location.Results[0].AddressComponents)
             {
                 if (addressComponent.Types.SequenceEqual(cityType))
@@ -65,7 +72,7 @@ namespace portalbot.Commands
                 {
                     if (cityString == "")
                     {
-                        await ReplyAsync("Location entered is not a city (or is not specific enough)");
+                        await ReplyAsync("Location entered is not a city.");
                         return;
                     }
 
@@ -75,7 +82,7 @@ namespace portalbot.Commands
 
             var forecast = await GetWeather(location);
 
-            await SendWeather(cityString, location, forecast.Response.Currently);
+            await SendWeather(cityString, forecast.Response.Currently);
         }
 
         [Command("c")]
@@ -125,7 +132,7 @@ namespace portalbot.Commands
 
             var forecast = await GetWeather(location, true);
 
-            await SendWeather(cityString, location, forecast.Response.Currently, true);
+            await SendWeather(cityString, forecast.Response.Currently, true);
         }
 
         private async Task<GeocoderResponse> GetLocation(string address)
@@ -153,7 +160,7 @@ namespace portalbot.Commands
                 return await _darkSky.GetForecast((double)location.Results[0].Geometry.Location.Lat, (double)location.Results[0].Geometry.Location.Lng);
         }
 
-        private async Task SendWeather(string city, GeocoderResponse location, DataPoint currently, bool canada = false)
+        private async Task SendWeather(string city, DataPoint currently, bool canada = false)
         {
             if (currently.Temperature != null && currently.WindSpeed != null)
             {
