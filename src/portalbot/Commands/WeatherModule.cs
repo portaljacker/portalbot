@@ -4,6 +4,7 @@ using Discord.Commands;
 using Newtonsoft.Json;
 using portalbot.Models;
 using System;
+using System.Linq;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -51,9 +52,30 @@ namespace portalbot.Commands
                 return;
             }
 
+            var cityString = "";
+            var cityType = location.Results[0].Types;
+            var provinceType = new[] { "administrative_area_level_1", "political" };
+            foreach (var addressComponent in location.Results[0].AddressComponents)
+            {
+                if (addressComponent.Types.SequenceEqual(cityType))
+                {
+                    cityString += addressComponent.LongName;
+                }
+                else if (addressComponent.Types.SequenceEqual(provinceType))
+                {
+                    if (cityString == "")
+                    {
+                        await ReplyAsync("Location entered is not a city (or is not specific enough)");
+                        return;
+                    }
+
+                    cityString += $", {addressComponent.ShortName}";
+                }
+            }
+
             var forecast = await GetWeather(location);
 
-            await SendWeather(location, forecast.Response.Currently);
+            await SendWeather(cityString, location, forecast.Response.Currently);
         }
 
         [Command("c")]
@@ -80,9 +102,30 @@ namespace portalbot.Commands
                 return;
             }
 
+            var cityString = "";
+            var cityType = location.Results[0].Types;
+            var provinceType = new[] { "administrative_area_level_1", "political" };
+            foreach (var addressComponent in location.Results[0].AddressComponents)
+            {
+                if (addressComponent.Types.SequenceEqual(cityType))
+                {
+                    cityString += addressComponent.LongName;
+                }
+                else if (addressComponent.Types.SequenceEqual(provinceType))
+                {
+                    if (cityString == "")
+                    {
+                        await ReplyAsync("Location entered is not a city (or is not specific enough)");
+                        return;
+                    }
+
+                    cityString += $", {addressComponent.ShortName}";
+                }
+            }
+
             var forecast = await GetWeather(location, true);
 
-            await SendWeather(location, forecast.Response.Currently, true);
+            await SendWeather(cityString, location, forecast.Response.Currently, true);
         }
 
         private async Task<GeocoderResponse> GetLocation(string address)
@@ -110,16 +153,16 @@ namespace portalbot.Commands
                 return await _darkSky.GetForecast((double)location.Results[0].Geometry.Location.Lat, (double)location.Results[0].Geometry.Location.Lng);
         }
 
-        private async Task SendWeather(GeocoderResponse location, DataPoint currently, bool canada = false)
+        private async Task SendWeather(string city, GeocoderResponse location, DataPoint currently, bool canada = false)
         {
             if (currently.Temperature != null && currently.WindSpeed != null)
             {
                 if (canada)
-                    await ReplyAsync($"Weather in ***{location.Results[0].FormattedAddress}*** " +
+                    await ReplyAsync($"Weather in ***{city}*** " +
                                      $"is currently ***{(int)currently.Temperature}° C***, " +
                                      $"with wind speed of ***{(int)currently.WindSpeed} km/h***.");
                 else
-                    await ReplyAsync($"Weather in ***{location.Results[0].FormattedAddress}*** " +
+                    await ReplyAsync($"Weather in ***{city}*** " +
                                      $"is currently ***{(int)currently.Temperature}° F***, " +
                                      $"with wind speed of ***{(int)currently.WindSpeed} mph***.");
             }
