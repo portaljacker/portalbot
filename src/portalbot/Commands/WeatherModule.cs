@@ -15,7 +15,7 @@ namespace portalbot.Commands
     [Alias("woppy")]
     public class WeatherModule : ModuleBase
     {
-        private static readonly Regex ValidCityState = new Regex(@"^[\p{L}\p{Mn}]+(?:[\s-][\p{L}\p{Mn}]+)*(?:(\,|(\,\s))?[\p{L}\p{Mn}]{2,})$", RegexOptions.IgnoreCase);
+        private static readonly Regex ValidCityState = new Regex(@"^([\p{L}\p{Mn}]+(?:[\s-'][\p{L}\p{Mn}]+)*)(?:(\,|(\,\s))[\p{L}\p{Mn}]{2,})?$", RegexOptions.IgnoreCase);
 
         private readonly string _googleApiToken = Environment.GetEnvironmentVariable("GOOGLE_API_KEY");
 
@@ -43,6 +43,12 @@ namespace portalbot.Commands
             if (location == null)
             {
                 await ReplyAsync("Error Querying Google API.");
+                return;
+            }
+
+            if (location.Results.Length <= 0)
+            {
+                await ReplyAsync("No results found.");
                 return;
             }
 
