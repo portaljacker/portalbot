@@ -2,14 +2,14 @@
 using DarkSky.Services;
 using Discord.Commands;
 using Newtonsoft.Json;
-using portalbot.Models;
+using PortalBot.Models;
 using System;
 using System.Linq;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace portalbot.Commands
+namespace PortalBot.Commands
 {
     [Group("weather")]
     [Alias("woppy")]

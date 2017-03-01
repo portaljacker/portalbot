@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace Portalbot
+namespace PortalBot
 {
     public class Program
     {

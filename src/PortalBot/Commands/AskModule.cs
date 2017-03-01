@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Portalbot.Commands
+namespace PortalBot.Commands
 {
     public class AskModule : ModuleBase
     {

@@ -6,14 +6,15 @@
     <VersionPrefix>0.2.0</VersionPrefix>
     <Authors>Portaljacker</Authors>
     <TargetFramework>netcoreapp1.1</TargetFramework>
-    <AssemblyName>portalbot</AssemblyName>
+    <AssemblyName>PortalBot</AssemblyName>
     <OutputType>Exe</OutputType>
-    <PackageId>portalbot</PackageId>
+    <PackageId>PortalBot</PackageId>
     <RuntimeFrameworkVersion>1.1.0</RuntimeFrameworkVersion>
     <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <RootNamespace>PortalBot</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

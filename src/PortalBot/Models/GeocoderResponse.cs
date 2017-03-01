@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace portalbot.Models
+namespace PortalBot.Models
 {
     public class GeocoderResponse
     {

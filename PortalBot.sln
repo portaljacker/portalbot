@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5A5EA743-80B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DB460088-8A42-47D8-9088-C6ED5933F734}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "portalbot", "src\portalbot\portalbot.csproj", "{9E05542A-1E8B-42C4-A754-AB7FEF102B67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portalbot", "src\PortalBot\Portalbot.csproj", "{9E05542A-1E8B-42C4-A754-AB7FEF102B67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
