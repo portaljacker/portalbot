@@ -99,6 +99,10 @@ namespace PortalBot.Commands
 
                     cityString += $", {addressComponent.ShortName}";
                 }
+
+                if (cityString != "") continue;
+                await ReplyAsync("Location entered is not a city.");
+                return;
             }
 
             var forecast = await GetWeather(location, isCanada);
