@@ -45,7 +45,7 @@ namespace PortalBot
             };//*/
 
             await _client.LoginAsync(TokenType.Bot, token);
-            await _client.ConnectAsync();
+            await _client.StartAsync();
 
             // Block this task until the program is exited.
             await Task.Delay(-1);
