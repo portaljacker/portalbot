@@ -156,6 +156,7 @@ namespace PortalBot.Commands
 
                 await ReplyAsync($"Weather in ***{city}*** " +
                                  $"is currently ***{(int)currently.Temperature}° {tempUnit}***, " +
+                                 $"{currently.Summary.ToLower()}, " +
                                  $"with wind speed of ***{(int)currently.WindSpeed} {speedUnit}***.");
             }
         }
