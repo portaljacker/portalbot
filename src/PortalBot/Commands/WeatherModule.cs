@@ -37,7 +37,7 @@ namespace PortalBot.Commands
 
         [Command("ca")]
         [Alias("c", "C")]
-        [Summary("Get the real weather for the selected city.")]
+        [Summary("Get the Canadian weather for the selected city.")]
         public async Task WeatherCa([Remainder, Summary("City (State optional")] string city)
         {
             await Weather(city, DarkSkyUnits.Ca);
@@ -45,15 +45,15 @@ namespace PortalBot.Commands
 
         [Command("uk")]
         [Alias("u", "U")]
-        [Summary("Get the real weather for the selected city.")]
+        [Summary("Get the Queen's weather for the selected city.")]
         public async Task WeatherUk([Remainder, Summary("City (State optional")] string city)
         {
-            await Weather(city, DarkSkyUnits.Ca);
+            await Weather(city, DarkSkyUnits.Uk2);
         }
 
-        [Command("f")]
-        [Alias("F")]
-        [Summary("Get the weather for the selected city.")]
+        [Command("us")]
+        [Alias("f", "F")]
+        [Summary("Get the freedom weather for the selected city.")]
         public async Task WeatherUs([Remainder, Summary("City (State optional")] string city)
         {
             await Weather(city, DarkSkyUnits.Us);
@@ -61,7 +61,7 @@ namespace PortalBot.Commands
 
         [Command("si")]
         [Alias("s", "S")]
-        [Summary("Get the real weather for the selected city.")]
+        [Summary("Get the scientific weather for the selected city.")]
         public async Task WeatherSi([Remainder, Summary("City (State optional")] string city)
         {
             await Weather(city, DarkSkyUnits.Si);
