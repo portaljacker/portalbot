@@ -19,9 +19,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DarkSkyCore" Version="1.5.1" />
-    <PackageReference Include="Discord.Net.Commands" Version="1.0.0-rc-00614" />
-    <PackageReference Include="Discord.Net.WebSocket" Version="1.0.0-rc-00614" />
+    <PackageReference Include="DarkSkyCore" Version="3.1.0" />
+    <PackageReference Include="Discord.Net.Commands" Version="1.0.2" />
+    <PackageReference Include="Discord.Net.WebSocket" Version="1.0.2" />
   </ItemGroup>
 
 </Project>

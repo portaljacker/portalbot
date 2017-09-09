@@ -2,6 +2,7 @@
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Net.Http;
 using System.Reflection;
@@ -13,24 +14,17 @@ namespace PortalBot
     {
         private CommandService _commands;
         private DiscordSocketClient _client;
-        private DependencyMap _map;
+        private IServiceProvider _services;
 
         public static void Main(string[] args) => new Program().Run().GetAwaiter().GetResult();
 
-        public async Task Run()
+        private async Task Run()
         {
             var token = Environment.GetEnvironmentVariable("DISCORD_BOT_TOKEN");
-            var darkSkySecretKey = Environment.GetEnvironmentVariable("DARK_SKY_SECRET_KEY");
 
             _client = new DiscordSocketClient();
             _commands = new CommandService();
-
-            _map = new DependencyMap();
-            _map.Add(_client);
-            _map.Add(_commands);
-            _map.Add(new HttpClient());
-            _map.Add(new DarkSkyService(darkSkySecretKey));
-            _map.Add(new Random());
+            _services = ConfigureServices();
 
             await InstallCommands();
 
@@ -47,16 +41,15 @@ namespace PortalBot
             await Task.Delay(-1);
         }
 
-        public async Task InstallCommands()
+        private async Task InstallCommands()
         {
             _client.MessageReceived += HandleCommand;
             await _commands.AddModulesAsync(Assembly.GetEntryAssembly());
         }
 
-        public async Task HandleCommand(SocketMessage messageParam)
+        private async Task HandleCommand(SocketMessage messageParam)
         {
-            var message = messageParam as SocketUserMessage;
-            if (message == null) return;
+            if (!(messageParam is SocketUserMessage message)) return;
 
             var argPos = 0;
 
@@ -64,7 +57,7 @@ namespace PortalBot
 
             var context = new CommandContext(_client, message);
 
-            var result = await _commands.ExecuteAsync(context, argPos, _map);
+            var result = await _commands.ExecuteAsync(context, argPos, _services);
             if (!result.IsSuccess)
             {
                 // Don't report when command doesn't exist.
@@ -72,6 +65,19 @@ namespace PortalBot
                     return;
                 await context.Channel.SendMessageAsync(result.ErrorReason);
             }
+        }
+
+        private IServiceProvider ConfigureServices()
+        {
+            var darkSkySecretKey = Environment.GetEnvironmentVariable("DARK_SKY_SECRET_KEY");
+
+            return new ServiceCollection()
+                .AddSingleton(_client)
+                .AddSingleton(_commands)
+                .AddSingleton(new HttpClient())
+                .AddSingleton(new DarkSkyService(darkSkySecretKey))
+                .AddSingleton(new Random())
+                .BuildServiceProvider();
         }
     }
 }
