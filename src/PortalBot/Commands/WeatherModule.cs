@@ -29,6 +29,7 @@ namespace PortalBot.Commands
         }
 
         [Command]
+        [Priority(-1)]
         [Summary("Get the weather for the selected city.")]
         public async Task Weather([Remainder, Summary("City (State optional")] string city)
         {
