@@ -25,6 +25,8 @@
     <PackageReference Include="DarkSkyCore" Version="3.1.0" />
     <PackageReference Include="Discord.Net.Commands" Version="1.0.2" />
     <PackageReference Include="Discord.Net.WebSocket" Version="1.0.2" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.6.3" />
+    <PackageReference Include="Jurassic" Version="3.0.0-alpha" />
   </ItemGroup>
 
 </Project>

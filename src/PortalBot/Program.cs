@@ -2,8 +2,11 @@
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using Jurassic;
 using Microsoft.Extensions.DependencyInjection;
+using PortalBot.Models;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -16,7 +19,7 @@ namespace PortalBot
         private DiscordSocketClient _client;
         private IServiceProvider _services;
 
-        public static void Main(string[] args) => new Program().Run().GetAwaiter().GetResult();
+        public static void Main() => new Program().Run().GetAwaiter().GetResult();
 
         private async Task Run()
         {
@@ -77,6 +80,8 @@ namespace PortalBot
                 .AddSingleton(new HttpClient())
                 .AddSingleton(new DarkSkyService(darkSkySecretKey))
                 .AddSingleton(new Random())
+                .AddSingleton(new Dictionary<string, Fact>())
+                .AddSingleton(new ScriptEngine())
                 .BuildServiceProvider();
         }
     }
