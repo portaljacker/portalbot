@@ -3,11 +3,11 @@ using Discord.Commands;
 using HtmlAgilityPack;
 using Jurassic;
 using Jurassic.Library;
-using Newtonsoft.Json;
 using PortalBot.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace PortalBot.Commands
@@ -68,11 +68,11 @@ namespace PortalBot.Commands
             var result = _scriptEngine.Evaluate("(function() { " + script + " return pageData; })()");
             var json = JSONObject.Stringify(_scriptEngine, result);
 
-            var factDictionary = JsonConvert.DeserializeObject<Dictionary<string, Fact>>(json);
+            var factDictionary = JsonSerializer.Deserialize<Dictionary<string, Fact>>(json);
 
-            foreach (var fact in factDictionary)
+            foreach (var (factKey, factValue) in factDictionary)
             {
-                _facts.Add(fact.Key, fact.Value);
+                _facts.Add(factKey, factValue);
             }
         }
 
@@ -84,6 +84,7 @@ namespace PortalBot.Commands
             {
                 yield return values[_random.Next(size)];
             }
+            // ReSharper disable once IteratorNeverReturns
         }
     }
 }

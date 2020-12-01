@@ -31,12 +31,6 @@ namespace PortalBot
 
             await InstallCommands();
 
-            /*_client.MessageReceived += async (message) =>
-            {
-                if (message.Content == "!ping")
-                    await message.Channel.SendMessageAsync("pong");
-            };//*/
-
             await _client.LoginAsync(TokenType.Bot, token);
             await _client.StartAsync();
 

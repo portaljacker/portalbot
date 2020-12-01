@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace PortalBot.Models
 {
@@ -13,15 +13,15 @@ namespace PortalBot.Models
     {
         public string[] Types { get; set; }
 
-        [JsonProperty(PropertyName = "formatted_address")]
+        [JsonPropertyName("formatted_address")]
         public string FormattedAddress { get; set; }
 
-        [JsonProperty(PropertyName = "address_components")]
+        [JsonPropertyName("address_components")]
         public AddressComponent[] AddressComponents { get; set; }
 
         public bool PartialMatch { get; set; }
 
-        [JsonProperty(PropertyName = "place_id")]
+        [JsonPropertyName("place_id")]
         public string PlaceId { get; set; }
 
         public string[] PostCodeLocalities { get; set; }
@@ -31,10 +31,10 @@ namespace PortalBot.Models
 
     public class AddressComponent
     {
-        [JsonProperty(PropertyName = "short_name")]
+        [JsonPropertyName("short_name")]
         public string ShortName { get; set; }
 
-        [JsonProperty(PropertyName = "long_name")]
+        [JsonPropertyName("long_name")]
         public string LongName { get; set; }
 
         public string[] PostCodeLocalities { get; set; }
@@ -46,7 +46,7 @@ namespace PortalBot.Models
     {
         public LatLng Location { get; set; }
 
-        [JsonProperty(PropertyName = "location_type")]
+        [JsonPropertyName("location_type")]
         public string LocationType { get; set; }
 
         public LatLngBounds Viewport { get; set; }

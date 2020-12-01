@@ -1,11 +1,11 @@
 ﻿using DarkSky.Models;
 using DarkSky.Services;
 using Discord.Commands;
-using Newtonsoft.Json;
 using PortalBot.Models;
 using System;
 using System.Linq;
 using System.Net.Http;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -142,7 +142,11 @@ namespace PortalBot.Commands
                 return null;
 
             var responseString = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<GeocoderResponse>(responseString);
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true,
+            };
+            return JsonSerializer.Deserialize<GeocoderResponse>(responseString, options);
         }
 
         private async Task<DarkSkyResponse> GetWeather(GeocoderResponse location, DarkSkyUnits units)
@@ -192,8 +196,8 @@ namespace PortalBot.Commands
 
         private async Task SendWeather(string city, DarkSkyResponse forecast)
         {
-            DataPoint currently = forecast.Response.Currently;
-            string units = forecast.Response.Flags.Units;
+            var currently = forecast.Response.Currently;
+            var units = forecast.Response.Flags.Units;
 
             if (currently.Temperature != null && currently.WindSpeed != null)
             {
