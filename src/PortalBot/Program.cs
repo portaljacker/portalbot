@@ -41,7 +41,7 @@ namespace PortalBot
         private async Task InstallCommands()
         {
             _client.MessageReceived += HandleCommand;
-            await _commands.AddModulesAsync(Assembly.GetEntryAssembly());
+            await _commands.AddModulesAsync(Assembly.GetEntryAssembly(), _services);
         }
 
         private async Task HandleCommand(SocketMessage messageParam)

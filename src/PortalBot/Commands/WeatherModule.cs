@@ -156,35 +156,35 @@ namespace PortalBot.Commands
                 case DarkSkyUnits.Auto:
                     return await _darkSky.GetForecast((double)location.Results[0].Geometry.Location.Lat,
                         (double)location.Results[0].Geometry.Location.Lng,
-                        new DarkSkyService.OptionalParameters()
+                        new OptionalParameters()
                         {
                             MeasurementUnits = "auto"
                         });
                 case DarkSkyUnits.Ca:
                     return await _darkSky.GetForecast((double)location.Results[0].Geometry.Location.Lat,
                         (double)location.Results[0].Geometry.Location.Lng,
-                        new DarkSkyService.OptionalParameters()
+                        new OptionalParameters()
                         {
                             MeasurementUnits = "ca"
                         });
                 case DarkSkyUnits.Uk2:
                     return await _darkSky.GetForecast((double)location.Results[0].Geometry.Location.Lat,
                         (double)location.Results[0].Geometry.Location.Lng,
-                        new DarkSkyService.OptionalParameters()
+                        new OptionalParameters()
                         {
                             MeasurementUnits = "uk2"
                         });
                 case DarkSkyUnits.Us:
                     return await _darkSky.GetForecast((double)location.Results[0].Geometry.Location.Lat,
                         (double)location.Results[0].Geometry.Location.Lng,
-                        new DarkSkyService.OptionalParameters()
+                        new OptionalParameters()
                         {
                             MeasurementUnits = "us"
                         });
                 case DarkSkyUnits.Si:
                     return await _darkSky.GetForecast((double)location.Results[0].Geometry.Location.Lat,
                         (double)location.Results[0].Geometry.Location.Lng,
-                        new DarkSkyService.OptionalParameters()
+                        new OptionalParameters()
                         {
                             MeasurementUnits = "si"
                         });
