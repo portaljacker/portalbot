@@ -1,82 +1,93 @@
-﻿using DarkSky.Services;
+namespace PortalBot;
+
+using DarkSky.Services;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Jurassic;
 using Microsoft.Extensions.DependencyInjection;
 using PortalBot.Models;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
 using System.Reflection;
-using System.Threading.Tasks;
 
-namespace PortalBot
+public class Program : IDisposable
 {
-    public class Program
+    private CommandService _commands;
+    private DiscordSocketClient _client;
+    private IServiceProvider _services;
+
+    public static void Main() => new Program().Run().GetAwaiter().GetResult();
+
+    private async Task Run()
     {
-        private CommandService _commands;
-        private DiscordSocketClient _client;
-        private IServiceProvider _services;
+        var token = Environment.GetEnvironmentVariable("DISCORD_BOT_TOKEN");
 
-        public static void Main() => new Program().Run().GetAwaiter().GetResult();
+        _client = new();
+        _commands = new();
+        _services = ConfigureServices();
 
-        private async Task Run()
+        await InstallCommands();
+
+        await _client.LoginAsync(TokenType.Bot, token);
+        await _client.StartAsync();
+
+        // Block this task until the program is exited.
+        await Task.Delay(-1);
+    }
+
+    private async Task InstallCommands()
+    {
+        _client.MessageReceived += HandleCommand;
+        await _commands.AddModulesAsync(Assembly.GetEntryAssembly(), _services);
+    }
+
+    private async Task HandleCommand(SocketMessage messageParam)
+    {
+        if (messageParam is not SocketUserMessage message)
         {
-            var token = Environment.GetEnvironmentVariable("DISCORD_BOT_TOKEN");
-
-            _client = new DiscordSocketClient();
-            _commands = new CommandService();
-            _services = ConfigureServices();
-
-            await InstallCommands();
-
-            await _client.LoginAsync(TokenType.Bot, token);
-            await _client.StartAsync();
-
-            // Block this task until the program is exited.
-            await Task.Delay(-1);
+            return;
         }
 
-        private async Task InstallCommands()
+        var argPos = 0;
+
+        if (!message.HasCharPrefix('!', ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos))
         {
-            _client.MessageReceived += HandleCommand;
-            await _commands.AddModulesAsync(Assembly.GetEntryAssembly(), _services);
+            return;
         }
 
-        private async Task HandleCommand(SocketMessage messageParam)
+        CommandContext context = new(_client, message);
+
+        var result = await _commands.ExecuteAsync(context, argPos, _services);
+        if (!result.IsSuccess)
         {
-            if (!(messageParam is SocketUserMessage message)) return;
-
-            var argPos = 0;
-
-            if (!message.HasCharPrefix('!', ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos)) return;
-
-            var context = new CommandContext(_client, message);
-
-            var result = await _commands.ExecuteAsync(context, argPos, _services);
-            if (!result.IsSuccess)
+            // Don't report when command doesn't exist.
+            if (result is SearchResult)
             {
-                // Don't report when command doesn't exist.
-                if (result is SearchResult)
-                    return;
-                await context.Channel.SendMessageAsync(result.ErrorReason);
+                return;
             }
+            await context.Channel.SendMessageAsync(result.ErrorReason);
         }
+    }
 
-        private IServiceProvider ConfigureServices()
-        {
-            var darkSkySecretKey = Environment.GetEnvironmentVariable("DARK_SKY_SECRET_KEY");
+    private IServiceProvider ConfigureServices()
+    {
+        var darkSkySecretKey = Environment.GetEnvironmentVariable("DARK_SKY_SECRET_KEY");
 
-            return new ServiceCollection()
-                .AddSingleton(_client)
-                .AddSingleton(_commands)
-                .AddSingleton(new HttpClient())
-                .AddSingleton(new DarkSkyService(darkSkySecretKey))
-                .AddSingleton(new Random())
-                .AddSingleton(new Dictionary<string, Fact>())
-                .AddSingleton(new ScriptEngine())
-                .BuildServiceProvider();
-        }
+        return new ServiceCollection()
+            .AddSingleton(_client)
+            .AddSingleton(_commands)
+            .AddSingleton(new HttpClient())
+            .AddSingleton(new DarkSkyService(darkSkySecretKey))
+            .AddSingleton(new Random())
+            .AddSingleton(new Dictionary<string, Fact>())
+            .AddSingleton(new ScriptEngine())
+            .BuildServiceProvider();
+    }
+
+    public void Dispose()
+    {
+        // uncomment after updating Discord.net
+        //this.commands?.Dispose(true);
+        _client?.Dispose();
+        GC.SuppressFinalize(this);
     }
 }

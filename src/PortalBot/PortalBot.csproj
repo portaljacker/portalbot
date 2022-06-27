@@ -1,11 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <Description>Portaljacker's bot for Discord.</Description>
     <Copyright>Portaljacker 2020</Copyright>
     <VersionPrefix>0.5.0</VersionPrefix>
     <Authors>Portaljacker</Authors>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>PortalBot</AssemblyName>
     <OutputType>Exe</OutputType>
     <PackageId>PortalBot</PackageId>
@@ -19,6 +19,9 @@
     <PackageProjectUrl>https://github.com/portaljacker/portalbot</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/portaljacker/portalbot/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/portaljacker/portalbot</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,6 +31,14 @@
     <PackageReference Include="HtmlAgilityPack" Version="1.11.29" />
     <PackageReference Include="Jurassic" Version="3.1.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="D:\git\PortalBot\src\PortalBot\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="D:\git\PortalBot\src\PortalBot\.editorconfig" />
   </ItemGroup>
 
 </Project>
