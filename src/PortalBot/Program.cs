@@ -1,5 +1,6 @@
 namespace PortalBot;
 
+using System.Reflection;
 using DarkSky.Services;
 using Discord;
 using Discord.Commands;
@@ -7,23 +8,27 @@ using Discord.WebSocket;
 using Jurassic;
 using Microsoft.Extensions.DependencyInjection;
 using PortalBot.Models;
-using System.Reflection;
 
 public class Program : IDisposable
 {
-    private CommandService _commands = new();
-    private DiscordSocketClient _client = new();
-    private IServiceProvider? _services;
+    private readonly DiscordSocketConfig _discordSocketConfig;
+    private readonly DiscordSocketClient _client;
+    private readonly CommandService _commands;
+    private readonly IServiceProvider _services;
+
+    public Program()
+    {
+        _discordSocketConfig = new() { GatewayIntents = GatewayIntents.AllUnprivileged };
+        _client = new(_discordSocketConfig);
+        _commands = new();
+        _services = ConfigureServices();
+    }
 
     public static void Main() => new Program().Run().GetAwaiter().GetResult();
 
     private async Task Run()
     {
         var token = Environment.GetEnvironmentVariable("DISCORD_BOT_TOKEN");
-
-        _client = new();
-        _commands = new();
-        _services = ConfigureServices();
 
         await InstallCommands();
 

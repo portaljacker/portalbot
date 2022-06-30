@@ -1,11 +1,11 @@
 namespace PortalBot.Commands;
 
+using System.Text.Json;
+using System.Text.RegularExpressions;
 using DarkSky.Models;
 using DarkSky.Services;
 using Discord.Commands;
 using PortalBot.Models;
-using System.Text.Json;
-using System.Text.RegularExpressions;
 
 [Group("weather")]
 [Alias("woppy")]

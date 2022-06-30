@@ -1,12 +1,12 @@
 namespace PortalBot.Commands;
 
+using System.Text.Json;
 using Discord;
 using Discord.Commands;
 using HtmlAgilityPack;
 using Jurassic;
 using Jurassic.Library;
 using PortalBot.Models;
-using System.Text.Json;
 
 [Group("snapple")]
 public class SnappleModule : ModuleBase
@@ -61,13 +61,16 @@ public class SnappleModule : ModuleBase
         var result = _scriptEngine.Evaluate("(function() { " + script + " return pageData; })()");
         var json = JSONObject.Stringify(_scriptEngine, result);
 
-        var factDictionary = JsonSerializer.Deserialize<Dictionary<string, Fact>>(json);
-
-        if (factDictionary != null)
+        if (json is string s)
         {
-            foreach (var (factKey, factValue) in factDictionary)
+            var factDictionary = JsonSerializer.Deserialize<Dictionary<string, Fact>>(s);
+
+            if (factDictionary != null)
             {
-                _facts.Add(factKey, factValue);
+                foreach (var (factKey, factValue) in factDictionary)
+                {
+                    _facts.Add(factKey, factValue);
+                }
             }
         }
     }
