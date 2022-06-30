@@ -11,9 +11,9 @@ using System.Reflection;
 
 public class Program : IDisposable
 {
-    private CommandService _commands;
-    private DiscordSocketClient _client;
-    private IServiceProvider _services;
+    private CommandService _commands = new();
+    private DiscordSocketClient _client = new();
+    private IServiceProvider? _services;
 
     public static void Main() => new Program().Run().GetAwaiter().GetResult();
 

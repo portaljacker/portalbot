@@ -20,7 +20,7 @@
     <PackageLicenseUrl>https://github.com/portaljacker/portalbot/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/portaljacker/portalbot</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <Nullable>disable</Nullable>
+    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 

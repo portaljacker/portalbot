@@ -2,12 +2,10 @@
 
 using System.Text.Json.Serialization;
 
-public class Fact
-{
-    [JsonPropertyName("n")] public string Number { get; set; }
+public record Fact(
+    [property: JsonPropertyName("n")] string Number,
+    [property: JsonPropertyName("d")] string Data
+);
 
-    [JsonPropertyName("d")] public string Data { get; set; }
-
-    // Deserializing category requires making a complicated SingleOrArray JsonConverter
-    // Example: https://stackoverflow.com/q/59430728
-}
+// Deserializing category requires making a complicated SingleOrArray JsonConverter
+// Example: https://stackoverflow.com/q/59430728

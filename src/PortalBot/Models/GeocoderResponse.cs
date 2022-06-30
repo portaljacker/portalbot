@@ -2,68 +2,41 @@
 
 using System.Text.Json.Serialization;
 
-public class GeocoderResponse
-{
-    public GeocoderResult[] Results { get; set; }
+public record GeocoderResponse(
+    GeocoderResult[] Results,
+    string Status
+);
 
-    public string Status { get; set; }
-}
+public record GeocoderResult(
+    string[] Types,
+    [property: JsonPropertyName("formatted_address")] string FormattedAddress,
+    [property: JsonPropertyName("address_components")] AddressComponent[] AddressComponents,
+    bool PartialMatch,
+    [property: JsonPropertyName("place_id")] string PlaceId,
+    string[] PostCodeLocalities,
+    Geometry Geometry
+);
 
-public class GeocoderResult
-{
-    public string[] Types { get; set; }
+public record AddressComponent(
+    [property: JsonPropertyName("short_name")] string ShortName,
+    [property: JsonPropertyName("long_name")] string LongName,
+    string[] PostCodeLocalities,
+    string[] Types
+);
 
-    [JsonPropertyName("formatted_address")]
-    public string FormattedAddress { get; set; }
+public record Geometry(
+    LatLng Location,
+    [property: JsonPropertyName("location_type")] string LocationType,
+    LatLngBounds Viewport,
+    LatLngBounds Bounds
+);
 
-    [JsonPropertyName("address_components")]
-    public AddressComponent[] AddressComponents { get; set; }
+public record LatLng(
+    decimal Lat,
+    decimal Lng
+);
 
-    public bool PartialMatch { get; set; }
-
-    [JsonPropertyName("place_id")]
-    public string PlaceId { get; set; }
-
-    public string[] PostCodeLocalities { get; set; }
-
-    public Geometry Geometry { get; set; }
-}
-
-public class AddressComponent
-{
-    [JsonPropertyName("short_name")]
-    public string ShortName { get; set; }
-
-    [JsonPropertyName("long_name")]
-    public string LongName { get; set; }
-
-    public string[] PostCodeLocalities { get; set; }
-
-    public string[] Types { get; set; }
-}
-
-public class Geometry
-{
-    public LatLng Location { get; set; }
-
-    [JsonPropertyName("location_type")]
-    public string LocationType { get; set; }
-
-    public LatLngBounds Viewport { get; set; }
-
-    public LatLngBounds Bounds { get; set; }
-}
-
-public class LatLng
-{
-    public decimal Lat { get; set; }
-
-    public decimal Lng { get; set; }
-}
-
-public class LatLngBounds
-{
-    public LatLng NorthEast { get; set; }
-
-    public LatLng SouthWest { get; set; }
-}
+public record LatLngBounds(
+    LatLng NorthEast,
+    LatLng SouthWest
+);

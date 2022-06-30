@@ -63,9 +63,12 @@ public class SnappleModule : ModuleBase
 
         var factDictionary = JsonSerializer.Deserialize<Dictionary<string, Fact>>(json);
 
-        foreach (var (factKey, factValue) in factDictionary)
+        if (factDictionary != null)
         {
-            _facts.Add(factKey, factValue);
+            foreach (var (factKey, factValue) in factDictionary)
+            {
+                _facts.Add(factKey, factValue);
+            }
         }
     }
 

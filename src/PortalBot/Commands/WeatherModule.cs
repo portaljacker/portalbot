@@ -13,7 +13,7 @@ public class WeatherModule : ModuleBase
 {
     private static readonly Regex s_validCityState = new(@"^([\p{L}\p{Mn}]+(?:[\s-'][\p{L}\p{Mn}]+)*)(?:(\,|(\,\s))[\p{L}\p{Mn}]{2,})?$", RegexOptions.IgnoreCase);
 
-    private readonly string _googleApiToken = Environment.GetEnvironmentVariable("GOOGLE_API_KEY");
+    private readonly string? _googleApiToken = Environment.GetEnvironmentVariable("GOOGLE_API_KEY");
 
     private readonly HttpClient _httpClient;
     private readonly DarkSkyService _darkSky;
@@ -119,13 +119,13 @@ public class WeatherModule : ModuleBase
         await SendWeather(cityString, forecast);
     }
 
-    private async Task<GeocoderResponse> GetLocation(string address)
+    private async Task<GeocoderResponse?> GetLocation(string address)
     {
         var requestString = $"https://maps.googleapis.com/maps/api/geocode/json?address={address}&key={_googleApiToken}";
         var response = await _httpClient.GetAsync(requestString);
         if (!response.IsSuccessStatusCode)
         {
-            return null; 
+            return null;
         }
 
         var responseString = await response.Content.ReadAsStringAsync();
