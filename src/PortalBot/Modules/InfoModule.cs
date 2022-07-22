@@ -1,4 +1,4 @@
-namespace PortalBot.Commands;
+namespace PortalBot.Modules;
 
 using Discord.Commands;
 

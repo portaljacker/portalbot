@@ -8,6 +8,7 @@ using Discord.WebSocket;
 using Jurassic;
 using Microsoft.Extensions.DependencyInjection;
 using PortalBot.Models;
+using PortalBot.Processors;
 
 public class Program : IDisposable
 {
@@ -82,9 +83,11 @@ public class Program : IDisposable
             .AddSingleton(_commands)
             .AddSingleton(new HttpClient())
             .AddSingleton(new DarkSkyService(darkSkySecretKey))
-            .AddSingleton(new Random())
+            .AddSingleton<WeatherProcessor>()
             .AddSingleton(new Dictionary<string, Fact>())
             .AddSingleton(new ScriptEngine())
+            .AddSingleton(new Random())
+            .AddSingleton<FactProcessor>()
             .BuildServiceProvider();
     }
 

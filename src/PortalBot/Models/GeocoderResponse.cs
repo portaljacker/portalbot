@@ -4,8 +4,7 @@ using System.Text.Json.Serialization;
 
 public record GeocoderResponse(
     GeocoderResult[] Results,
-    string Status
-);
+    string Status);
 
 public record GeocoderResult(
     string[] Types,
@@ -14,29 +13,24 @@ public record GeocoderResult(
     bool PartialMatch,
     [property: JsonPropertyName("place_id")] string PlaceId,
     string[] PostCodeLocalities,
-    Geometry Geometry
-);
+    Geometry Geometry);
 
 public record AddressComponent(
     [property: JsonPropertyName("short_name")] string ShortName,
     [property: JsonPropertyName("long_name")] string LongName,
     string[] PostCodeLocalities,
-    string[] Types
-);
+    string[] Types);
 
 public record Geometry(
     LatLng Location,
     [property: JsonPropertyName("location_type")] string LocationType,
     LatLngBounds Viewport,
-    LatLngBounds Bounds
-);
+    LatLngBounds Bounds);
 
 public record LatLng(
     decimal Lat,
-    decimal Lng
-);
+    decimal Lng);
 
 public record LatLngBounds(
     LatLng NorthEast,
-    LatLng SouthWest
-);
+    LatLng SouthWest);

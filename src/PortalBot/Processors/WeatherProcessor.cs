@@ -1,15 +1,13 @@
-namespace PortalBot.Commands;
+﻿namespace PortalBot.Processors;
 
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using DarkSky.Models;
 using DarkSky.Services;
-using Discord.Commands;
+using PortalBot.Enums;
 using PortalBot.Models;
 
-[Group("weather")]
-[Alias("woppy")]
-public class WeatherModule : ModuleBase
+public class WeatherProcessor
 {
     private static readonly Regex s_validCityState = new(@"^([\p{L}\p{Mn}]+(?:[\s-'][\p{L}\p{Mn}]+)*)(?:(\,|(\,\s))[\p{L}\p{Mn}]{2,})?$", RegexOptions.IgnoreCase);
 
@@ -18,64 +16,35 @@ public class WeatherModule : ModuleBase
     private readonly HttpClient _httpClient;
     private readonly DarkSkyService _darkSky;
 
-    public WeatherModule(HttpClient httpClient, DarkSkyService darkSky)
+    public WeatherProcessor(HttpClient httpClient, DarkSkyService darkSky)
     {
         _httpClient = httpClient;
         _darkSky = darkSky;
     }
 
-    [Command]
-    [Priority(-1)]
-    [Summary("Get the weather for the selected city.")]
-    public async Task Weather([Remainder, Summary("City (State optional")] string city) => await Weather(city, DarkSkyUnits.Auto);
-
-    [Command("ca")]
-    [Alias("c", "C")]
-    [Summary("Get the Canadian weather for the selected city.")]
-    public async Task WeatherCa([Remainder, Summary("City (State optional")] string city) => await Weather(city, DarkSkyUnits.Ca);
-
-    [Command("uk")]
-    [Alias("u", "U")]
-    [Summary("Get the Queen's weather for the selected city.")]
-    public async Task WeatherUk([Remainder, Summary("City (State optional")] string city) => await Weather(city, DarkSkyUnits.Uk2);
-
-    [Command("us")]
-    [Alias("f", "F")]
-    [Summary("Get the freedom weather for the selected city.")]
-    public async Task WeatherUs([Remainder, Summary("City (State optional")] string city) => await Weather(city, DarkSkyUnits.Us);
-
-    [Command("si")]
-    [Alias("s", "S")]
-    [Summary("Get the scientific weather for the selected city.")]
-    public async Task WeatherSi([Remainder, Summary("City (State optional")] string city) => await Weather(city, DarkSkyUnits.Si);
-
-    private async Task Weather(string city, DarkSkyUnits units)
+    public async Task<string> GetWeather(WeatherRequest request)
     {
-        if (!s_validCityState.IsMatch(city))
+        if (!s_validCityState.IsMatch(request.Location))
         {
-            var example = units == DarkSkyUnits.Ca ? "Montreal, QC" : "Washington, DC";
+            var example = request.Units == DarkSkyUnits.Ca ? "Montreal, QC" : "Washington, DC";
 
-            await ReplyAsync($"Invalid city format, please try again. (eg. {example})");
-            return;
+            return $"Invalid city format, please try again. (eg. {example})";
         }
 
-        var location = await GetLocation(city);
+        var location = await GetLocation(request.Location);
         if (location == null)
         {
-            await ReplyAsync("Error Querying Google API.");
-            return;
+            return "Error Querying Google API.";
         }
 
         if (location.Results.Length <= 0)
         {
-            await ReplyAsync("No results found.");
-            return;
+            return "No results found.";
         }
 
         if (location.Results[0].Geometry.Location.Lat == 0 && location.Results[0].Geometry.Location.Lng == 0)
         {
-            await ReplyAsync("City not found, please try again.");
-            return;
+            return "City not found, please try again.";
         }
 
         var cityString = "";
@@ -85,9 +54,9 @@ public class WeatherModule : ModuleBase
         var countryType = new[] { "country", "political" };
         if (cityType.SequenceEqual(provinceType) || cityType.SequenceEqual(stateType) || cityType.SequenceEqual(countryType))
         {
-            await ReplyAsync("Location entered is not a city (or is not specific enough).");
-            return;
+            return "Location entered is not a city (or is not specific enough).";
         }
+
         foreach (var addressComponent in location.Results[0].AddressComponents)
         {
             if (addressComponent.Types.SequenceEqual(cityType))
@@ -98,8 +67,7 @@ public class WeatherModule : ModuleBase
             {
                 if (cityString == "")
                 {
-                    await ReplyAsync("Location entered is not a city.");
-                    return;
+                    return "Location entered is not a city.";
                 }
 
                 cityString += $", {addressComponent.ShortName}";
@@ -110,13 +78,12 @@ public class WeatherModule : ModuleBase
                 continue;
             }
 
-            await ReplyAsync("Location entered is not a city.");
-            return;
+            return "Location entered is not a city.";
         }
 
-        var forecast = await GetWeather(location, units);
+        var forecast = await GetWeather(location, request.Units);
 
-        await SendWeather(cityString, forecast);
+        return FormatWeather(cityString, forecast);
     }
 
     private async Task<GeocoderResponse?> GetLocation(string address)
@@ -133,6 +100,7 @@ public class WeatherModule : ModuleBase
         {
             PropertyNameCaseInsensitive = true,
         };
+
         return JsonSerializer.Deserialize<GeocoderResponse>(responseString, options);
     }
 
@@ -140,6 +108,7 @@ public class WeatherModule : ModuleBase
     {
         var lat = (double)location.Results[0].Geometry.Location.Lat;
         var lng = (double)location.Results[0].Geometry.Location.Lng;
+
         return units switch
         {
             DarkSkyUnits.Auto => await _darkSky.GetForecast(lat, lng, new() { MeasurementUnits = "auto" }),
@@ -151,7 +120,7 @@ public class WeatherModule : ModuleBase
         };
     }
 
-    private async Task SendWeather(string city, DarkSkyResponse forecast)
+    private static string FormatWeather(string city, DarkSkyResponse forecast)
     {
         var currently = forecast.Response.Currently;
         var units = forecast.Response.Flags.Units;
@@ -181,19 +150,12 @@ public class WeatherModule : ModuleBase
                     break;
             }
 
-            await ReplyAsync($"Weather in ***{city}*** " +
-                             $"is currently ***{(int)currently.Temperature}° {tempUnit}***, " +
-                             $"{currently.Summary.ToLower(System.Globalization.CultureInfo.InvariantCulture)}, " +
-                             $"with wind speed of ***{(int)currently.WindSpeed} {windSpeedUnit}***.");
+            return $"Weather in ***{city}*** " +
+                    $"is currently ***{(int)currently.Temperature}° {tempUnit}***, " +
+                    $"{currently.Summary.ToLowerInvariant()}, " +
+                    $"with wind speed of ***{(int)currently.WindSpeed} {windSpeedUnit}***.";
         }
-    }
 
-    private enum DarkSkyUnits
-    {
-        Auto,
-        Ca,
-        Uk2,
-        Us,
-        Si
-    };
+        return "";
+    }
 }

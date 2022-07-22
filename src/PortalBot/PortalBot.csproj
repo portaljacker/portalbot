@@ -32,12 +32,4 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <EditorConfigFiles Remove="D:\git\PortalBot\src\PortalBot\.editorconfig" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="D:\git\PortalBot\src\PortalBot\.editorconfig" />
-  </ItemGroup>
-
 </Project>
