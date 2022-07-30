@@ -5,7 +5,7 @@ using Discord;
 using HtmlAgilityPack;
 using Jurassic;
 using Jurassic.Library;
-using PortalBot.Models;
+using Models;
 
 public class FactProcessor
 {
@@ -39,17 +39,21 @@ public class FactProcessor
         var result = _scriptEngine.Evaluate("(function() { " + script + " return pageData; })()");
         var json = JSONObject.Stringify(_scriptEngine, result);
 
-        if (json is string s)
+        if (json is not string s)
         {
-            var factDictionary = JsonSerializer.Deserialize<Dictionary<string, Fact>>(s);
+            return;
+        }
 
-            if (factDictionary != null)
-            {
-                foreach (var (factKey, factValue) in factDictionary)
-                {
-                    _facts.Add(factKey, factValue);
-                }
-            }
+        var factDictionary = JsonSerializer.Deserialize<Dictionary<string, Fact>>(s);
+
+        if (factDictionary == null)
+        {
+            return;
+        }
+
+        foreach (var (factKey, factValue) in factDictionary)
+        {
+            _facts.Add(factKey, factValue);
         }
     }
 

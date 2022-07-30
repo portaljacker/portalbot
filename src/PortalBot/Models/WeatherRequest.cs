@@ -1,6 +1,6 @@
 ﻿namespace PortalBot.Models;
 
-using PortalBot.Enums;
+using Enums;
 
 public record WeatherRequest(
     string Location,

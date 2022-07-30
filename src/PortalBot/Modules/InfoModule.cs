@@ -1,18 +1,16 @@
 namespace PortalBot.Modules;
 
-using Discord.Commands;
+using Discord.Interactions;
 
-public class InfoModule : ModuleBase
+public class InfoModule : InteractionModuleBase<SocketInteractionContext>
 {
-    [Command("ping")]
-    [Summary("pong!")]
-    public async Task Ping() => await ReplyAsync("pong!");
+    [SlashCommand("ping", "Check if bot is online")]
+    public async Task Ping() => await RespondAsync("pong!");
 
-    [Command("say")]
-    [Summary("Echos a message.")]
-    public async Task Say([Remainder, Summary("The text to echo")] string echo)
+    [SlashCommand("say", "Echos a message")]
+    public async Task Say([Summary(description: "The text to say")] string echo)
     {
         var userInfo = Context.User;
-        await ReplyAsync($"{userInfo.Username} wants me to say, \"{echo}\" frankly I think that's a ridiculous expectation on their part, now don't you?");
+        await RespondAsync($"{userInfo.Username} wants me to say, \"{echo}\" frankly I think that's a ridiculous expectation on their part, now don't you?");
     }
 }

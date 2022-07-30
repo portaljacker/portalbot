@@ -4,8 +4,8 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using DarkSky.Models;
 using DarkSky.Services;
-using PortalBot.Enums;
-using PortalBot.Models;
+using Enums;
+using Models;
 
 public class WeatherProcessor
 {
@@ -125,37 +125,38 @@ public class WeatherProcessor
         var currently = forecast.Response.Currently;
         var units = forecast.Response.Flags.Units;
 
-        if (currently.Temperature != null && currently.WindSpeed != null)
+        if (currently.Temperature == null || currently.WindSpeed == null)
         {
-            string tempUnit;
-            string windSpeedUnit;
-
-            switch (units)
-            {
-                case "ca":
-                    tempUnit = "C";
-                    windSpeedUnit = "km/h";
-                    break;
-                case "uk2":
-                    tempUnit = "C";
-                    windSpeedUnit = "mph";
-                    break;
-                case "us":
-                    tempUnit = "F";
-                    windSpeedUnit = "mph";
-                    break;
-                default:
-                    tempUnit = "C";
-                    windSpeedUnit = "m/s";
-                    break;
-            }
-
-            return $"Weather in ***{city}*** " +
-                    $"is currently ***{(int)currently.Temperature}° {tempUnit}***, " +
-                    $"{currently.Summary.ToLowerInvariant()}, " +
-                    $"with wind speed of ***{(int)currently.WindSpeed} {windSpeedUnit}***.";
+            return "";
         }
 
-        return "";
+        string tempUnit;
+        string windSpeedUnit;
+
+        switch (units)
+        {
+            case "ca":
+                tempUnit = "C";
+                windSpeedUnit = "km/h";
+                break;
+            case "uk2":
+                tempUnit = "C";
+                windSpeedUnit = "mph";
+                break;
+            case "us":
+                tempUnit = "F";
+                windSpeedUnit = "mph";
+                break;
+            default:
+                tempUnit = "C";
+                windSpeedUnit = "m/s";
+                break;
+        }
+
+        return $"Weather in ***{city}*** " +
+               $"is currently ***{(int)currently.Temperature}° {tempUnit}***, " +
+               $"{currently.Summary.ToLowerInvariant()}, " +
+               $"with wind speed of ***{(int)currently.WindSpeed} {windSpeedUnit}***.";
+
     }
 }

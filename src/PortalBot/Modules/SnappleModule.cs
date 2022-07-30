@@ -1,19 +1,17 @@
 namespace PortalBot.Modules;
 
-using Discord.Commands;
-using PortalBot.Processors;
+using Discord.Interactions;
+using Processors;
 
-[Group("snapple")]
-public class SnappleModule : ModuleBase
+public class SnappleModule : InteractionModuleBase<SocketInteractionContext>
 {
-    private FactProcessor _facts;
+    private readonly FactProcessor _facts;
 
     public SnappleModule(FactProcessor facts)
     {
         _facts = facts;
     }
 
-    [Command]
-    [Summary("Get a random Snapple \"Real Fact\"")]
-    public async Task GetFact() => await ReplyAsync("", embed: _facts.GetFact());
+    [SlashCommand("snapple", "Get a random Snapple \"Real Fact\"")]
+    public async Task GetFact() => await RespondAsync("", embed: _facts.GetFact());
 }

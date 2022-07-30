@@ -1,9 +1,9 @@
 namespace PortalBot.Modules;
 
 using System.Collections.ObjectModel;
-using Discord.Commands;
+using Discord.Interactions;
 
-public class AskModule : ModuleBase
+public class AskModule : InteractionModuleBase<SocketInteractionContext>
 {
     private readonly Random _random;
     private readonly IList<string> _answers = new ReadOnlyCollection<string>(new List<string> {
@@ -31,11 +31,11 @@ public class AskModule : ModuleBase
 
     public AskModule(Random random) => _random = random;
 
-    [Command("ask"), Summary("Ask a question.")]
-    public async Task Ask([Remainder, Summary("Your question")] string question)
+    [SlashCommand("ask", "Ask a question")]
+    public async Task Ask([Summary(description: "Your question")] string question)
     {
         var answer = _answers[_random.Next(_answers.Count)];
         var userInfo = Context.User;
-        await ReplyAsync($"{userInfo.Username} asked, \"{question}\" Magic 8-ball says: _**\"{answer}\"**_");
+        await RespondAsync($"{userInfo.Username} asked, \"{question}\" Magic 8-ball says: _**\"{answer}\"**_");
     }
 }
