@@ -82,7 +82,9 @@ public class FactProcessor
             .WithAuthor(author => author
                 .WithName("Snapple")
                 .WithUrl("https://www.snapple.com")
-                .WithIconUrl("https://www.snapple.com/images/ico/Icon-72@2x.png"));
+                .WithIconUrl("https://www.snapple.com/images/ico/Icon-72@2x.png"))
+            .WithFooter(footer => footer
+                .WithText("Disclaimer: Snapple facts may not be entirely factual."));
 
         return builder.Build();
     }
