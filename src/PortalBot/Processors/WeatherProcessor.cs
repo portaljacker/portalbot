@@ -2,10 +2,11 @@
 
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using DarkSky.Models;
-using DarkSky.Services;
+using Discord;
 using Enums;
 using Models;
+using OpenWeatherMap.Cache;
+using OpenWeatherMap.Cache.Models;
 
 public class WeatherProcessor
 {
@@ -14,37 +15,37 @@ public class WeatherProcessor
     private readonly string? _googleApiToken = Environment.GetEnvironmentVariable("GOOGLE_API_KEY");
 
     private readonly HttpClient _httpClient;
-    private readonly DarkSkyService _darkSky;
+    private readonly IOpenWeatherMapCache _weatherMapCache;
 
-    public WeatherProcessor(HttpClient httpClient, DarkSkyService darkSky)
+    public WeatherProcessor(HttpClient httpClient, IOpenWeatherMapCache weatherMapCache)
     {
         _httpClient = httpClient;
-        _darkSky = darkSky;
+        _weatherMapCache = weatherMapCache;
     }
 
-    public async Task<string> GetWeather(WeatherRequest request)
+    public async Task<Embed> GetWeather(WeatherRequest request)
     {
         if (!s_validCityState.IsMatch(request.Location))
         {
-            var example = request.Units == DarkSkyUnits.Ca ? "Montreal, QC" : "Washington, DC";
+            var example = request.Units == WeatherUnits.Ca ? "Montreal, QC" : "Washington, DC";
 
-            return $"Invalid city format, please try again. (eg. {example})";
+            return GetErrorEmbed($"Invalid city format, please try again. (eg. {example})");
         }
 
         var location = await GetLocation(request.Location);
         if (location == null)
         {
-            return "Error Querying Google API.";
+            return GetErrorEmbed("Error Querying Google API.");
         }
 
         if (location.Results.Length <= 0)
         {
-            return "No results found.";
+            return GetErrorEmbed("No results found.");
         }
 
-        if (location.Results[0].Geometry.Location.Lat == 0 && location.Results[0].Geometry.Location.Lng == 0)
+        if (location.Results[0].Geometry.Location is { Lat: 0, Lng: 0 })
         {
-            return "City not found, please try again.";
+            return GetErrorEmbed("City not found, please try again.");
         }
 
         var cityString = "";
@@ -54,7 +55,7 @@ public class WeatherProcessor
         var countryType = new[] { "country", "political" };
         if (cityType.SequenceEqual(provinceType) || cityType.SequenceEqual(stateType) || cityType.SequenceEqual(countryType))
         {
-            return "Location entered is not a city (or is not specific enough).";
+            return GetErrorEmbed("Location entered is not a city (or is not specific enough).");
         }
 
         foreach (var addressComponent in location.Results[0].AddressComponents)
@@ -67,23 +68,31 @@ public class WeatherProcessor
             {
                 if (cityString == "")
                 {
-                    return "Location entered is not a city.";
+                    return GetErrorEmbed("Location entered is not a city.");
                 }
 
                 cityString += $", {addressComponent.ShortName}";
             }
 
-            if (cityString != "")
+            if (cityString == "")
             {
-                continue;
+                return GetErrorEmbed("Location entered is not a city.");
             }
-
-            return "Location entered is not a city.";
         }
 
-        var forecast = await GetWeather(location, request.Units);
+        var readings = await GetWeather(location);
 
-        return FormatWeather(cityString, forecast);
+        if (readings.IsSuccessful)
+        {
+            return FormatWeather(cityString, readings, request.Units);
+        }
+        else
+        {
+            var apiErrorCode = readings.Exception?.ApiErrorCode;
+            var apiErrorMessage = readings.Exception?.ApiErrorMessage;
+
+            return GetErrorEmbed($"Error retrieving weather readings: {apiErrorMessage}\nCode: {apiErrorCode}");
+        }
     }
 
     private async Task<GeocoderResponse?> GetLocation(string address)
@@ -104,59 +113,76 @@ public class WeatherProcessor
         return JsonSerializer.Deserialize<GeocoderResponse>(responseString, options);
     }
 
-    private async Task<DarkSkyResponse> GetWeather(GeocoderResponse location, DarkSkyUnits units)
+    private async Task<Readings> GetWeather(GeocoderResponse location)
     {
         var lat = (double)location.Results[0].Geometry.Location.Lat;
         var lng = (double)location.Results[0].Geometry.Location.Lng;
 
-        return units switch
-        {
-            DarkSkyUnits.Auto => await _darkSky.GetForecast(lat, lng, new() { MeasurementUnits = "auto" }),
-            DarkSkyUnits.Ca => await _darkSky.GetForecast(lat, lng, new() { MeasurementUnits = "ca" }),
-            DarkSkyUnits.Uk2 => await _darkSky.GetForecast(lat, lng, new() { MeasurementUnits = "uk2" }),
-            DarkSkyUnits.Us => await _darkSky.GetForecast(lat, lng, new() { MeasurementUnits = "us" }),
-            DarkSkyUnits.Si => await _darkSky.GetForecast(lat, lng, new() { MeasurementUnits = "si" }),
-            _ => await _darkSky.GetForecast(lat, lng)
-        };
+        var locationQuery = new Location(lat, lng);
+
+        return await _weatherMapCache.GetReadingsAsync(locationQuery);
     }
 
-    private static string FormatWeather(string city, DarkSkyResponse forecast)
+    private static Embed FormatWeather(string city, Readings readings, WeatherUnits units)
     {
-        var currently = forecast.Response.Currently;
-        var units = forecast.Response.Flags.Units;
-
-        if (currently.Temperature == null || currently.WindSpeed == null)
-        {
-            return "";
-        }
-
+        double temp;
         string tempUnit;
+        double windSpeed;
         string windSpeedUnit;
 
         switch (units)
         {
-            case "ca":
+            case WeatherUnits.Ca:
+                temp = readings.Temperature.DegreesCelsius;
                 tempUnit = "C";
+                windSpeed = readings.WindSpeed.KilometersPerHour;
                 windSpeedUnit = "km/h";
                 break;
-            case "uk2":
+            case WeatherUnits.Metric:
+                temp = readings.Temperature.DegreesCelsius;
                 tempUnit = "C";
-                windSpeedUnit = "mph";
-                break;
-            case "us":
-                tempUnit = "F";
-                windSpeedUnit = "mph";
-                break;
-            default:
-                tempUnit = "C";
+                windSpeed = readings.WindSpeed.MetersPerSecond;
                 windSpeedUnit = "m/s";
+                break;
+            case WeatherUnits.Uk:
+                temp = readings.Temperature.DegreesCelsius;
+                tempUnit = "C";
+                windSpeed = readings.WindSpeed.MilesPerHour;
+                windSpeedUnit = "mph";
+                break;
+            case WeatherUnits.Us:
+            default:
+                temp = readings.Temperature.DegreesFahrenheit;
+                tempUnit = "F";
+                windSpeed = readings.WindSpeed.MilesPerHour;
+                windSpeedUnit = "mph";
                 break;
         }
 
-        return $"Weather in ***{city}*** " +
-               $"is currently ***{(int)currently.Temperature}° {tempUnit}***, " +
-               $"{currently.Summary.ToLowerInvariant()}, " +
-               $"with wind speed of ***{(int)currently.WindSpeed} {windSpeedUnit}***.";
+        var description = $"Weather in ***{readings.CityName}*** " +
+                   $"is currently ***{(int)temp}° {tempUnit}***, " +
+                   $"{readings.Weather.FirstOrDefault()?.Description}, " +
+                   $"with wind speed of ***{(int)windSpeed} {windSpeedUnit}***.";
 
+        var builder = new EmbedBuilder()
+            .WithTitle(city)
+            .WithDescription(description)
+            .WithUrl($"https://openweathermap.org/city/{readings.CityId}")
+            .WithColor(new(0xE36D46))
+            .WithFooter(footer => footer
+                .WithText("Weather data provided by OpenWeather")
+                .WithIconUrl("https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/icons/logo_60x60.png"));
+
+        return builder.Build();
+    }
+
+    private static Embed GetErrorEmbed(string error)
+    {
+        var builder = new EmbedBuilder()
+            .WithTitle("Weather Error")
+            .WithDescription(error)
+            .WithColor(new(0xE36D46));
+
+        return builder.Build();
     }
 }

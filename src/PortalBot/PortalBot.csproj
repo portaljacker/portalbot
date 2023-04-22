@@ -25,11 +25,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DarkSkyCore" Version="6.0.2" />
     <PackageReference Include="Discord.Net" Version="3.7.2" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.43" />
     <PackageReference Include="Jurassic" Version="3.2.6" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="OpenWeatherMap.Cache" Version="1.9.8" />
   </ItemGroup>
 
 </Project>

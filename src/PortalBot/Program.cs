@@ -1,12 +1,12 @@
 namespace PortalBot;
 
-using DarkSky.Services;
 using Discord;
 using Discord.Interactions;
 using Discord.WebSocket;
 using Jurassic;
 using Microsoft.Extensions.DependencyInjection;
 using Models;
+using OpenWeatherMap.Cache.Extensions;
 using Processors;
 
 public class Program
@@ -41,7 +41,7 @@ public class Program
 
     private IServiceProvider ConfigureServices()
     {
-        var darkSkySecretKey = Environment.GetEnvironmentVariable("DARK_SKY_SECRET_KEY");
+        var openWeatherMapApiKey = Environment.GetEnvironmentVariable("OPEN_WEATHER_API_KEY");
 
         return new ServiceCollection()
             .AddSingleton(_socketConfig)
@@ -49,7 +49,7 @@ public class Program
             .AddSingleton(s => new InteractionService(s.GetRequiredService<DiscordSocketClient>()))
             .AddSingleton<InteractionHandler>()
             .AddSingleton(new HttpClient())
-            .AddSingleton(new DarkSkyService(darkSkySecretKey))
+            .AddOpenWeatherMapCache(openWeatherMapApiKey, 600_000, timeout: 2_000)
             .AddSingleton<WeatherProcessor>()
             .AddSingleton(new Dictionary<string, Fact>())
             .AddSingleton(new ScriptEngine())

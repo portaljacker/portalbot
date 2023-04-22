@@ -78,11 +78,11 @@ public class FactProcessor
             .WithTitle($"\"Real Fact\" #{fact?.Number}")
             .WithDescription(fact?.Data)
             .WithUrl($"https://www.snapple.com/real-facts/{fact?.Number}")
-            .WithColor(new Color(0xCA621B))
+            .WithColor(new Color(0x275999))
             .WithAuthor(author => author
-                    .WithName("Snapple")
-                    .WithUrl("https://www.snapple.com")
-                    .WithIconUrl("https://www.snapple.com/images/ico/Icon-72@2x.png"));
+                .WithName("Snapple")
+                .WithUrl("https://www.snapple.com")
+                .WithIconUrl("https://www.snapple.com/images/ico/Icon-72@2x.png"));
 
         return builder.Build();
     }
