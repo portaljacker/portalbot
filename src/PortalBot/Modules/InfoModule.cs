@@ -2,6 +2,7 @@ namespace PortalBot.Modules;
 
 using Discord;
 using Discord.Interactions;
+using Discord.WebSocket;
 
 public class InfoModule : InteractionModuleBase<SocketInteractionContext>
 {
@@ -12,6 +13,7 @@ public class InfoModule : InteractionModuleBase<SocketInteractionContext>
     public async Task Say([Summary(description: "The text to say")] string echo)
     {
         var userInfo = Context.User;
-        await RespondAsync($"{Format.Sanitize(userInfo.Username)} wants me to say, \"{Format.Sanitize(echo)}\" frankly I think that's a ridiculous expectation on their part, now don't you?");
+        var nickname = (userInfo as SocketGuildUser)?.Nickname ?? userInfo.Username;
+        await RespondAsync($"{Format.Sanitize(nickname)} wants me to say, \"{Format.Sanitize(echo)}\" frankly I think that's a ridiculous expectation on their part, now don't you?");
     }
 }

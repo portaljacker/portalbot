@@ -16,7 +16,7 @@ public class Program
 
     public Program()
     {
-        _socketConfig = new() { GatewayIntents = GatewayIntents.AllUnprivileged };
+        _socketConfig = new() { GatewayIntents = GatewayIntents.AllUnprivileged | GatewayIntents.GuildMembers };
         _services = ConfigureServices();
     }
 

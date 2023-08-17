@@ -38,6 +38,7 @@ public class AskModule : InteractionModuleBase<SocketInteractionContext>
     {
         var answer = _answers[_random.Next(_answers.Count)];
         var userInfo = Context.User;
-        await RespondAsync($"{Format.Sanitize(userInfo.Username)} asked, \"{Format.Sanitize(question)}\" Magic 8-ball says: _**\"{answer}\"**_");
+        var nickname = (userInfo as SocketGuildUser)?.Nickname ?? userInfo.Username;
+        await RespondAsync($"{Format.Sanitize(nickname)} asked, \"{Format.Sanitize(question)}\" Magic 8-ball says: _**\"{answer}\"**_");
     }
 }
