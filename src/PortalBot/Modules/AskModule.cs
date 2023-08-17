@@ -1,7 +1,9 @@
 namespace PortalBot.Modules;
 
 using System.Collections.ObjectModel;
+using Discord;
 using Discord.Interactions;
+using Discord.WebSocket;
 
 public class AskModule : InteractionModuleBase<SocketInteractionContext>
 {
@@ -36,6 +38,6 @@ public class AskModule : InteractionModuleBase<SocketInteractionContext>
     {
         var answer = _answers[_random.Next(_answers.Count)];
         var userInfo = Context.User;
-        await RespondAsync($"{userInfo.Username} asked, \"{question}\" Magic 8-ball says: _**\"{answer}\"**_");
+        await RespondAsync($"{Format.Sanitize(userInfo.Username)} asked, \"{Format.Sanitize(question)}\" Magic 8-ball says: _**\"{answer}\"**_");
     }
 }

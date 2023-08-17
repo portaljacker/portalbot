@@ -1,5 +1,6 @@
 namespace PortalBot.Modules;
 
+using Discord;
 using Discord.Interactions;
 
 public class InfoModule : InteractionModuleBase<SocketInteractionContext>
@@ -11,6 +12,6 @@ public class InfoModule : InteractionModuleBase<SocketInteractionContext>
     public async Task Say([Summary(description: "The text to say")] string echo)
     {
         var userInfo = Context.User;
-        await RespondAsync($"{userInfo.Username} wants me to say, \"{echo}\" frankly I think that's a ridiculous expectation on their part, now don't you?");
+        await RespondAsync($"{Format.Sanitize(userInfo.Username)} wants me to say, \"{Format.Sanitize(echo)}\" frankly I think that's a ridiculous expectation on their part, now don't you?");
     }
 }
