@@ -2,23 +2,16 @@
 
 using System.Text.Json;
 using Discord;
-using HtmlAgilityPack;
-using Jurassic;
-using Jurassic.Library;
 using Models;
 
 public class FactProcessor
 {
-    private const string FactUriStem = "http://www.snapple.com/real-facts";
-
     private readonly Dictionary<string, Fact> _facts;
-    private readonly ScriptEngine _scriptEngine;
     private readonly Random _random;
 
-    public FactProcessor(Dictionary<string, Fact> facts, ScriptEngine scriptEngine, Random random)
+    public FactProcessor(Dictionary<string, Fact> facts, Random random)
     {
         _facts = facts;
-        _scriptEngine = scriptEngine;
         _random = random;
 
         if (_facts.Count == 0)
@@ -29,22 +22,14 @@ public class FactProcessor
 
     private void LoadFacts()
     {
-        var web = new HtmlWeb();
-        var doc = web.Load(FactUriStem);
-        var script = doc.DocumentNode.Descendants("script")
-            .FirstOrDefault(n =>
-                n.InnerText
-                .Contains("pageData"))?.InnerText;
+        var json = File.ReadAllText("Data/realFacts.json");
 
-        var result = _scriptEngine.Evaluate("(function() { " + script + " return pageData; })()");
-        var json = JSONObject.Stringify(_scriptEngine, result);
-
-        if (json is not string s)
+        if (string.IsNullOrWhiteSpace(json))
         {
             return;
         }
 
-        var factDictionary = JsonSerializer.Deserialize<Dictionary<string, Fact>>(s);
+        var factDictionary = JsonSerializer.Deserialize<Dictionary<string, Fact>>(json);
 
         if (factDictionary == null)
         {

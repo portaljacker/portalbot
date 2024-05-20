@@ -1,0 +1,1397 @@
+﻿{
+    "11": {
+        "n": "11",
+        "d": "Flamingos turn pink from eating shrimp."
+    },
+    "17": {
+        "n": "17",
+        "d": "The Bee Hummingbird weighs less than a penny.",
+        "f": true
+    },
+    "26": {
+        "n": "26",
+        "d": "The Hawaiian alphabet has only 12 letters."
+    },
+    "27": {
+        "n": "27",
+        "d": "A ball of glass will bounce higher than a ball of rubber of the same size."
+    },
+    "33": {
+        "n": "33",
+        "d": "Termites eat through wood 2 times faster when listening to rock music."
+    },
+    "44": {
+        "n": "44",
+        "d": "The bullfrog is the only animal that never sleeps."
+    },
+    "45": {
+        "n": "45",
+        "d": "Elephants are capable of swimming 20 miles a day.",
+        "f": true
+    },
+    "46": {
+        "n": "46",
+        "d": "Elephants are the only mammals that can't jump."
+    },
+    "48": {
+        "n": "48",
+        "d": "Cats can hear ultrasound."
+    },
+    "49": {
+        "n": "49",
+        "d": "Despite its hump, a camel has a straight spine."
+    },
+    "55": {
+        "n": "55",
+        "d": "A human brain weighs around 3 pounds."
+    },
+    "56": {
+        "n": "56",
+        "d": "1\/4 of the bones in your body are in your feet."
+    },
+    "57": {
+        "n": "57",
+        "d": "You blink over 4 million times a year."
+    },
+    "60": {
+        "n": "60",
+        "d": "The tongue is the fastest healing part of a human body."
+    },
+    "61": {
+        "n": "61",
+        "d": "Pigs can get sunburn.",
+        "f": true
+    },
+    "62": {
+        "n": "62",
+        "d": "The lifespan of a taste bud is about ten days."
+    },
+    "64": {
+        "n": "64",
+        "d": "Strawberries contain more vitamin C than oranges."
+    },
+    "69": {
+        "n": "69",
+        "d": "No word in the English language rhymes with month."
+    },
+    "84": {
+        "n": "84",
+        "d": "Oysters can change from one gender to another and back again."
+    },
+    "88": {
+        "n": "88",
+        "d": "A ten-gallon hat holds less than a gallon of liquid."
+    },
+    "93": {
+        "n": "93",
+        "d": "Kangaroos can jump 30 feet."
+    },
+    "94": {
+        "n": "94",
+        "d": "Lizards communicate by doing push-ups.",
+        "f": true
+    },
+    "95": {
+        "n": "95",
+        "d": "Squids can have eyes the size of a volleyball."
+    },
+    "98": {
+        "n": "98",
+        "d": "When the moon is directly overhead, you weigh slightly less."
+    },
+    "110": {
+        "n": "110",
+        "d": "Frogs never drink."
+    },
+    "111": {
+        "n": "111",
+        "d": "Only male turkeys gobble."
+    },
+    "112": {
+        "n": "112",
+        "d": "At birth a Dalmatian is always pure white."
+    },
+    "115": {
+        "n": "115",
+        "d": "Bamboo makes up 99% of a panda's diet."
+    },
+    "119": {
+        "n": "119",
+        "d": "The humming bird is the only bird that can fly backwards."
+    },
+    "120": {
+        "n": "120",
+        "d": "The only continent without reptiles or snakes is Antarctica."
+    },
+    "122": {
+        "n": "122",
+        "d": "A duck can't walk without bobbing its head."
+    },
+    "123": {
+        "n": "123",
+        "d": "Beavers were once the size of bears."
+    },
+    "126": {
+        "n": "126",
+        "d": "A pigeon's feathers are heavier than its bones."
+    },
+    "128": {
+        "n": "128",
+        "d": "Dragonflies have six legs but cannot walk."
+    },
+    "130": {
+        "n": "130",
+        "d": "Koalas and humans are the only animals with unique fingerprints."
+    },
+    "132": {
+        "n": "132",
+        "d": "A crocodile cannot move its tongue."
+    },
+    "133": {
+        "n": "133",
+        "d": "Honeybees navigate by using the Sun as a compass.",
+        "f": true
+    },
+    "139": {
+        "n": "139",
+        "d": "Hawaii is the only state with one school district."
+    },
+    "142": {
+        "n": "142",
+        "d": "Hawaii is the only U.S. state never to report a temperature of zero."
+    },
+    "144": {
+        "n": "144",
+        "d": "Texas is the only state that permits residents to cast absentee ballots from space."
+    },
+    "150": {
+        "n": "150",
+        "d": "The first sport to be filmed was boxing in 1894."
+    },
+    "164": {
+        "n": "164",
+        "d": "The first vacuum was so large, it was brought to a house with horses."
+    },
+    "168": {
+        "n": "168",
+        "d": "One brow wrinkle is the result of 200,000 frowns."
+    },
+    "169": {
+        "n": "169",
+        "d": "The first human-made object to break the sound barrier was a whip."
+    },
+    "174": {
+        "n": "174",
+        "d": "The world's biggest pyramid is not in Egypt, but in Mexico."
+    },
+    "175": {
+        "n": "175",
+        "d": "In 1634, Tulip bulbs were a form of currency in Holland."
+    },
+    "177": {
+        "n": "177",
+        "d": "The first sailing boats were built in Egypt."
+    },
+    "182": {
+        "n": "182",
+        "d": "A rainbow can only be seen in the morning or late afternoon.",
+        "f": true
+    },
+    "185": {
+        "n": "185",
+        "d": "A male kangaroo is called a Boomer.",
+        "f": true
+    },
+    "196": {
+        "n": "196",
+        "d": "If you doubled one penny every day for 30 days, you would have $5,368,709.12."
+    },
+    "201": {
+        "n": "201",
+        "d": "The only one-syllabled U.S. state is Maine."
+    },
+    "208": {
+        "n": "208",
+        "d": "Opposite faces of dice always add up to 7."
+    },
+    "211": {
+        "n": "211",
+        "d": "The average koala sleeps 22 hours each day."
+    },
+    "212": {
+        "n": "212",
+        "d": "A Galapagos tortoise can take up to three weeks to digest a meal."
+    },
+    "219": {
+        "n": "219",
+        "d": "An electric eel can release a charge powerful enough to start 50 cars."
+    },
+    "221": {
+        "n": "221",
+        "d": "The game of basketball was first played using a soccer ball and two peach baskets."
+    },
+    "223": {
+        "n": "223",
+        "d": "The Basenji is a dog that yodels instead of barking."
+    },
+    "236": {
+        "n": "236",
+        "d": "Cows give more milk when they listen to music.",
+        "f": true
+    },
+    "237": {
+        "n": "237",
+        "d": "The number of times a cricket chirps in 15 seconds, plus 37, will give you the current air temperature."
+    },
+    "256": {
+        "n": "256",
+        "d": "There are more saunas than cars in Finland."
+    },
+    "283": {
+        "n": "283",
+        "d": "A compass needle does not point directly north."
+    },
+    "292": {
+        "n": "292",
+        "d": "Heavier, not bigger, lemons produce more juice."
+    },
+    "302": {
+        "n": "302",
+        "d": "Ketchup was once sold as a medicine."
+    },
+    "306": {
+        "n": "306",
+        "d": "In the Middle Ages, chicken soup was considered an aphrodisiac."
+    },
+    "315": {
+        "n": "315",
+        "d": "No two lip impressions are the same."
+    },
+    "328": {
+        "n": "328",
+        "d": "The Statue of Liberty features 7 points in her crown- one for each of the continents."
+    },
+    "335": {
+        "n": "335",
+        "d": "Maine produces more toothpicks than any other state in the U.S."
+    },
+    "343": {
+        "n": "343",
+        "d": "The term 007 was derived from 20007, the home zip code of many Washington, D.C. agents."
+    },
+    "345": {
+        "n": "345",
+        "d": "The popsicle was invented in 1905 by an 11-year-old boy."
+    },
+    "360": {
+        "n": "360",
+        "d": "Mexican jumping beans jump to get out of sunlight."
+    },
+    "370": {
+        "n": "370",
+        "d": "Heat, not sunlight, ripens tomatoes."
+    },
+    "377": {
+        "n": "377",
+        "d": "\"Disco\" means \"I learn\" in Latin."
+    },
+    "381": {
+        "n": "381",
+        "d": "Baboons were once trained by Egyptians to wait on tables."
+    },
+    "382": {
+        "n": "382",
+        "d": "The official state gem of Washington is petrified wood."
+    },
+    "408": {
+        "n": "408",
+        "d": "Panda bears eat up to 16 hours a day.",
+        "f": true
+    },
+    "414": {
+        "n": "414",
+        "d": "Chameleons can move both their eyes in different directions at the same time."
+    },
+    "419": {
+        "n": "419",
+        "d": "A jiffy is an actual time measurement equaling 1\/100th of a second.",
+        "f": true
+    },
+    "423": {
+        "n": "423",
+        "d": "U.S. paper currency isn\u2019t made of paper \u2013 it\u2019s actually a blend of cotton and linen."
+    },
+    "425": {
+        "n": "425",
+        "d": "Kangaroos can\u2019t walk backwards."
+    },
+    "430": {
+        "n": "430",
+        "d": "One acre of peanuts will make about 30,000 peanut butter sandwiches."
+    },
+    "437": {
+        "n": "437",
+        "d": "The woodpecker can hammer wood up to 16 times per second."
+    },
+    "439": {
+        "n": "439",
+        "d": "Snails can sleep for up to three years.",
+        "f": true
+    },
+    "440": {
+        "n": "440",
+        "d": "The pupils in goats\u2019 eyes are rectangular."
+    },
+    "444": {
+        "n": "444",
+        "d": "The Statue of Liberty wears a size 879 sandal."
+    },
+    "451": {
+        "n": "451",
+        "d": "Human eyes have over two million working parts."
+    },
+    "458": {
+        "n": "458",
+        "d": "Fresh cranberries can be bounced like a rubber ball."
+    },
+    "460": {
+        "n": "460",
+        "d": "Astronauts actually get taller when in space."
+    },
+    "461": {
+        "n": "461",
+        "d": "A fifteen-year-old boy invented earmuffs in 1873."
+    },
+    "470": {
+        "n": "470",
+        "d": "Dairy cows drink up to 50 gallons of water per day."
+    },
+    "660": {
+        "n": "660",
+        "d": "The strike note of the Liberty Bell is E flat."
+    },
+    "664": {
+        "n": "664",
+        "d": "It is against the law to put pretzels in bags in Philadelphia."
+    },
+    "685": {
+        "n": "685",
+        "d": "Dogs can make about 10 sounds, while cats make about 100."
+    },
+    "686": {
+        "n": "686",
+        "d": "A pelican can hold more food in its beak than its belly."
+    },
+    "687": {
+        "n": "687",
+        "d": "The average cat can jump 5 times as high as its tail is long."
+    },
+    "694": {
+        "n": "694",
+        "d": "Spiny lobsters migrate in groups of 50 or more, forming a conga line on the ocean floor.",
+        "f": true
+    },
+    "705": {
+        "n": "705",
+        "d": "Every ton of recycled paper saves about 17 trees."
+    },
+    "714": {
+        "n": "714",
+        "d": "A camel can drink 25 gallons of water in less than three minutes."
+    },
+    "716": {
+        "n": "716",
+        "d": "There is a museum of strawberries in Belgium."
+    },
+    "720": {
+        "n": "720",
+        "d": "Fresh apples float because 25 percent of their volume is air."
+    },
+    "727": {
+        "n": "727",
+        "d": "A spider\u2019s silk is stronger than steel."
+    },
+    "729": {
+        "n": "729",
+        "d": "Twins have a very high occurrence of left-handedness."
+    },
+    "730": {
+        "n": "730",
+        "d": "The fear of vegetables is called lachanophobia."
+    },
+    "732": {
+        "n": "732",
+        "d": "The chicken is the closest living relative of Tyrannosaurus Rex."
+    },
+    "733": {
+        "n": "733",
+        "d": "All scorpions glow."
+    },
+    "735": {
+        "n": "735",
+        "d": "A full moon is nine times brighter than a half moon.",
+        "f": true
+    },
+    "737": {
+        "n": "737",
+        "d": "The human brain takes up 2% of human body weight but uses 20% of its energy."
+    },
+    "739": {
+        "n": "739",
+        "d": "You transfer more germs shaking hands than kissing."
+    },
+    "741": {
+        "n": "741",
+        "d": "Plants, like humans, can run a fever if they are sick."
+    },
+    "744": {
+        "n": "744",
+        "d": "Polar bears can smell a seal from 20 miles away."
+    },
+    "746": {
+        "n": "746",
+        "d": "The praying mantis can turn its head 180 degrees."
+    },
+    "753": {
+        "n": "753",
+        "d": "A group of goats is called a trip."
+    },
+    "754": {
+        "n": "754",
+        "d": "An alligator can go through 3,000 teeth in a lifetime. ."
+    },
+    "755": {
+        "n": "755",
+        "d": "There are more chickens than people in the world."
+    },
+    "759": {
+        "n": "759",
+        "d": "A rhinoceros horn is made of compacted hair."
+    },
+    "760": {
+        "n": "760",
+        "d": "Dolphins sleep with one eye open."
+    },
+    "762": {
+        "n": "762",
+        "d": "A duck has three eyelids."
+    },
+    "763": {
+        "n": "763",
+        "d": "Tigers have striped skin, not just striped fur.",
+        "f": true
+    },
+    "778": {
+        "n": "778",
+        "d": "Some bears build nests in trees to sunbathe and rest."
+    },
+    "779": {
+        "n": "779",
+        "d": "A group of jellyfish is called a smack."
+    },
+    "785": {
+        "n": "785",
+        "d": "The middle finger has the fastest growing nail."
+    },
+    "790": {
+        "n": "790",
+        "d": "Your big toe only has 2 bones and the rest have 3."
+    },
+    "791": {
+        "n": "791",
+        "d": "The average person takes 23,000 breaths a day."
+    },
+    "797": {
+        "n": "797",
+        "d": "It is illegal to run out of gas in Youngstown, Ohio."
+    },
+    "801": {
+        "n": "801",
+        "d": "It is not possible to tickle yourself."
+    },
+    "812": {
+        "n": "812",
+        "d": "111,111,111 x 111,111,111 = 12,345,678,987,654,321."
+    },
+    "814": {
+        "n": "814",
+        "d": "Tug-of-war was an Olympic sport in the early 1900s."
+    },
+    "819": {
+        "n": "819",
+        "d": "Children grow faster during springtime.",
+        "f": true
+    },
+    "821": {
+        "n": "821",
+        "d": "It takes an interaction of 72 muscles to produce human speech."
+    },
+    "823": {
+        "n": "823",
+        "d": "Sailors once thought wearing gold earrings improved eyesight."
+    },
+    "825": {
+        "n": "825",
+        "d": "Our eyes are always the same size from birth, but our nose and ears never stop growing."
+    },
+    "827": {
+        "n": "827",
+        "d": "Your skull is made up of 29 different bones."
+    },
+    "829": {
+        "n": "829",
+        "d": "Women's hearts typically beat faster than men's hearts."
+    },
+    "831": {
+        "n": "831",
+        "d": "Adults laugh only about 15 to 100 times a day, while preschoolers laugh an average of 300 times a day."
+    },
+    "833": {
+        "n": "833",
+        "d": "Children have more taste buds than adults."
+    },
+    "845": {
+        "n": "845",
+        "d": "A lemon contains more sugar than a strawberry."
+    },
+    "883": {
+        "n": "883",
+        "d": "Butterflies can taste with their hind feet."
+    },
+    "886": {
+        "n": "886",
+        "d": "The bumblebee bat weighs less than a penny."
+    },
+    "891": {
+        "n": "891",
+        "d": "Pound cake got its name from the original recipe which called for a pound of butter."
+    },
+    "894": {
+        "n": "894",
+        "d": "Jousting is the official sport of Maryland."
+    },
+    "906": {
+        "n": "906",
+        "d": "Rubber bands last longer when refrigerated.",
+        "f": true
+    },
+    "910": {
+        "n": "910",
+        "d": "Less than 3% of the water on Earth is fresh."
+    },
+    "932": {
+        "n": "932",
+        "d": "Horses can't vomit."
+    },
+    "933": {
+        "n": "933",
+        "d": "A crocodile can't stick out its tongue."
+    },
+    "936": {
+        "n": "936",
+        "d": "A day on Venus lasts longer than a year on Venus."
+    },
+    "937": {
+        "n": "937",
+        "d": "Squirrels lose more than half of the nuts they hide."
+    },
+    "940": {
+        "n": "940",
+        "d": "Forty percent of twins invent their own language."
+    },
+    "941": {
+        "n": "941",
+        "d": "In South Korea, it is against the rules for a professional baseball player to wear cabbage leaves inside of his hat."
+    },
+    "942": {
+        "n": "942",
+        "d": "Curly hair follicles are oval, while straight hair follicles are round."
+    },
+    "951": {
+        "n": "951",
+        "d": "A pearl can be dissolved by vinegar."
+    },
+    "953": {
+        "n": "953",
+        "d": "The longest attack of hiccups lasted 68 years.",
+        "f": true
+    },
+    "955": {
+        "n": "955",
+        "d": "A bolt of lightning can reach temperatures hotter than the sun."
+    },
+    "956": {
+        "n": "956",
+        "d": "At the deepest point in the ocean, the water pressure is equivalent to having about 50 jumbo jets piled on top of you."
+    },
+    "958": {
+        "n": "958",
+        "d": "The state of Alabama once financed the construction of a bridge by holding a rooster auction."
+    },
+    "960": {
+        "n": "960",
+        "d": "There are 21 \"secret\" highways that are part of the Interstate Highway System. They are not identified as such by road signs."
+    },
+    "961": {
+        "n": "961",
+        "d": "The aphid insect is born pregnant."
+    },
+    "964": {
+        "n": "964",
+        "d": "It is illegal in the United Kingdom to handle salmon in suspicious circumstances."
+    },
+    "965": {
+        "n": "965",
+        "d": "It is illegal to play annoying games in the street in the UK."
+    },
+    "966": {
+        "n": "966",
+        "d": "Tennis was originally played with bare hands."
+    },
+    "970": {
+        "n": "970",
+        "d": "Dolphins are unable to smell."
+    },
+    "980": {
+        "n": "980",
+        "d": "When grazing or resting, cows tend to align their bodies with the magnetic north and south poles."
+    },
+    "982": {
+        "n": "982",
+        "d": "Cows do not have upper front teeth."
+    },
+    "986": {
+        "n": "986",
+        "d": "In Switzerland, it is illegal to own only one guinea pig because they are prone to loneliness."
+    },
+    "988": {
+        "n": "988",
+        "d": "Each year, the Moon moves away from Earth by about four centimeters."
+    },
+    "989": {
+        "n": "989",
+        "d": "To make one pound of honey, a honeybee must tap about two million flowers.",
+        "f": true
+    },
+    "990": {
+        "n": "990",
+        "d": "Chicago is named after smelly garlic that once grew in the area."
+    },
+    "993": {
+        "n": "993",
+        "d": "Powerful earthquakes can make the Earth spin faster."
+    },
+    "994": {
+        "n": "994",
+        "d": "Baby bunnies are called kittens."
+    },
+    "995": {
+        "n": "995",
+        "d": "A group of flamingos is called a flamboyance."
+    },
+    "996": {
+        "n": "996",
+        "d": "Sea otters hold each other\u2019s paws while sleeping so they don\u2019t drift apart."
+    },
+    "997": {
+        "n": "997",
+        "d": "Gentoo penguins propose to their life mates with a pebble."
+    },
+    "999": {
+        "n": "999",
+        "d": "A cat\u2019s nose is ridged with a unique pattern, just like a human fingerprint."
+    },
+    "1000": {
+        "n": "1000",
+        "d": "A group of porcupines is called a prickle."
+    },
+    "1001": {
+        "n": "1001",
+        "d": "99% of our solar system's mass is the sun."
+    },
+    "1007": {
+        "n": "1007",
+        "d": "OMG was added to dictionaries in 2011, but it\u2019s first known use was in 1917."
+    },
+    "1008": {
+        "n": "1008",
+        "d": "In the state of Arizona, it is illegal for donkeys to sleep in bathtubs."
+    },
+    "1010": {
+        "n": "1010",
+        "d": "Rats and mice are ticklish, and even laugh when tickled."
+    },
+    "1011": {
+        "n": "1011",
+        "d": "Norway once knighted a penguin."
+    },
+    "1012": {
+        "n": "1012",
+        "d": "The King of Hearts is the only king without a mustache."
+    },
+    "1013": {
+        "n": "1013",
+        "d": "It is illegal to sing off-key in North Carolina."
+    },
+    "1014": {
+        "n": "1014",
+        "d": "Forty is the only number whose letters are in alphabetical order."
+    },
+    "1015": {
+        "n": "1015",
+        "d": "One is the only number with letters in reverse alphabetical order."
+    },
+    "1020": {
+        "n": "1020",
+        "d": "DFW Airport in Texas is larger than the island of Manhattan."
+    },
+    "1022": {
+        "n": "1022",
+        "d": "Miami installed the first ATM for inline skaters."
+    },
+    "1023": {
+        "n": "1023",
+        "d": "Indonesia is made up of more than 17,000 islands."
+    },
+    "1024": {
+        "n": "1024",
+        "d": "Giraffes have the same number of vertebrae as humans: 7."
+    },
+    "1029": {
+        "n": "1029",
+        "d": "Humans share 50% of their DNA with bananas.",
+        "f": true
+    },
+    "1031": {
+        "n": "1031",
+        "d": "An octopus has nine brains and three hearts."
+    },
+    "1088": {
+        "n": "1088",
+        "d": "Strawberries are actually members of the rose family."
+    },
+    "1092": {
+        "n": "1092",
+        "d": "Folklore states that if you split a double strawberry in half and share it with the opposite sex, you\u2019ll soon fall in love."
+    },
+    "1100": {
+        "n": "1100",
+        "d": "Mint comes in over 30 varieties."
+    },
+    "1107": {
+        "n": "1107",
+        "d": "Ancient Romans thought strawberries could cure bad breath and chronic fainting."
+    },
+    "1111": {
+        "n": "1111",
+        "d": "Strawberries taste sweeter at room temperature."
+    },
+    "1206": {
+        "n": "1206",
+        "d": "Russia and the United States of America are less than 3 miles apart."
+    },
+    "1222": {
+        "n": "1222",
+        "d": "Venus is the only planet to rotate clockwise."
+    },
+    "1225": {
+        "n": "1225",
+        "d": "You can\u2019t hum while plugging your nose."
+    },
+    "1226": {
+        "n": "1226",
+        "d": "Elephants are afraid of bees."
+    },
+    "1228": {
+        "n": "1228",
+        "d": "Chimps can develop their own fashion trends."
+    },
+    "1233": {
+        "n": "1233",
+        "d": "It takes around 200 muscles to take a step."
+    },
+    "1234": {
+        "n": "1234",
+        "d": "The flamingo can only eat when its head is upside down."
+    },
+    "1238": {
+        "n": "1238",
+        "d": "Adult humans are the only mammal that can't breathe and swallow at the same time."
+    },
+    "1239": {
+        "n": "1239",
+        "d": "Hens do not need a rooster to lay an egg."
+    },
+    "1242": {
+        "n": "1242",
+        "d": "There are more fake than real flamingos."
+    },
+    "1244": {
+        "n": "1244",
+        "d": "The word utopia \u2013 an ideal place \u2013 ironically comes from a Greek word meaning \u201cno place.\u201d"
+    },
+    "1248": {
+        "n": "1248",
+        "d": "Jellyfish don\u2019t have brains."
+    },
+    "1249": {
+        "n": "1249",
+        "d": "Jellyfish can clone themselves."
+    },
+    "1251": {
+        "n": "1251",
+        "d": "Walruses are true party animals; they can go without sleep for 84 hours."
+    },
+    "1258": {
+        "n": "1258",
+        "d": "Ripening bananas glow an intense blue under black light."
+    },
+    "1260": {
+        "n": "1260",
+        "d": "Mercury and Venus are the only planets in our solar system with no moon."
+    },
+    "1263": {
+        "n": "1263",
+        "d": "The only thing that can scratch a diamond is a diamond."
+    },
+    "1267": {
+        "n": "1267",
+        "d": "10M bricks were used to build the Empire State Building."
+    },
+    "1270": {
+        "n": "1270",
+        "d": "Early sunscreens included ingredients like rice bran oil, iron, clay, and tar."
+    },
+    "1272": {
+        "n": "1272",
+        "d": "In the U.S., there is an official rock, paper, scissors league."
+    },
+    "1274": {
+        "n": "1274",
+        "d": "Kickball is referred to as \u201csoccer-baseball\u201d in some parts of Canada."
+    },
+    "1277": {
+        "n": "1277",
+        "d": "There are more tigers owned by Americans than in the wild worldwide."
+    },
+    "1278": {
+        "n": "1278",
+        "d": "Hawaiian pizza was actually created in Canada."
+    },
+    "1281": {
+        "n": "1281",
+        "d": "In Venus, it snows metal."
+    },
+    "1284": {
+        "n": "1284",
+        "d": "The average dog can understand over 150 words."
+    },
+    "1285": {
+        "n": "1285",
+        "d": "At one time, serving ice cream on cherry pie in Kansas was prohibited."
+    },
+    "1286": {
+        "n": "1286",
+        "d": "Blueberries are one of the only natural foods that are truly blue in color."
+    },
+    "1294": {
+        "n": "1294",
+        "d": "Maine produces more wild blueberries than anywhere else in the world."
+    },
+    "1295": {
+        "n": "1295",
+        "d": "75% of the U.S.\u2019s tart cherries come from Michigan."
+    },
+    "1315": {
+        "n": "1315",
+        "d": "Australia has 10,685 beaches; you could visit a new beach every day for more than 29 years."
+    },
+    "1321": {
+        "n": "1321",
+        "d": "Alaska is the only state that can be typed on one row of keys."
+    },
+    "1324": {
+        "n": "1324",
+        "d": "In South Korea, a baby is considered 1 year old at birth."
+    },
+    "1328": {
+        "n": "1328",
+        "d": "You cannot taste food until mixed with saliva."
+    },
+    "1330": {
+        "n": "1330",
+        "d": "There is a pink lake in Australia named Lake Hillier."
+    },
+    "1337": {
+        "n": "1337",
+        "d": "Antarctica is home to the largest desert in the world."
+    },
+    "1339": {
+        "n": "1339",
+        "d": "In Texas, it is legal to kill Bigfoot if you ever find it."
+    },
+    "1340": {
+        "n": "1340",
+        "d": "Elephants can smell water from miles away."
+    },
+    "1342": {
+        "n": "1342",
+        "d": "You can tell a turtle\u2019s gender by the noise it makes. Males grunt and females hiss."
+    },
+    "1346": {
+        "n": "1346",
+        "d": "An average cumulus cloud weighs more than 70 adult T-Rexes.",
+        "f": true
+    },
+    "1349": {
+        "n": "1349",
+        "d": "The national animal of Scotland is the Unicorn."
+    },
+    "1351": {
+        "n": "1351",
+        "d": "The ostrich produces a booming noise, often confused with a lion roar."
+    },
+    "1354": {
+        "n": "1354",
+        "d": "You are always looking at your nose, your brain just chooses to ignore it.",
+        "f": true
+    },
+    "1367": {
+        "n": "1367",
+        "d": "From 2010 to 2017, every tweet was archived by the Library of Congress."
+    },
+    "1376": {
+        "n": "1376",
+        "d": "Golf was the first sport to be played on the moon."
+    },
+    "1382": {
+        "n": "1382",
+        "d": "A housefly hums in the key of F."
+    },
+    "1388": {
+        "n": "1388",
+        "d": "Human thigh bones are stronger than concrete."
+    },
+    "1392": {
+        "n": "1392",
+        "d": "If you could drive your car upwards, you would be in space in less than an hour."
+    },
+    "1393": {
+        "n": "1393",
+        "d": "The sun is actually white, but the earth\u2019s atmosphere makes it appear yellow."
+    },
+    "1395": {
+        "n": "1395",
+        "d": "Snakes can see even with their eyes closed"
+    },
+    "1397": {
+        "n": "1397",
+        "d": "Gorillas burp when they are happy."
+    },
+    "1402": {
+        "n": "1402",
+        "d": "In France, it's illegal for employers to send emails after work hours."
+    },
+    "1411": {
+        "n": "1411",
+        "d": "There are more stars in the sky than grains of sand on earth."
+    },
+    "1415": {
+        "n": "1415",
+        "d": "Mangoes have noses."
+    },
+    "1416": {
+        "n": "1416",
+        "d": "Mangoes can get sunburned."
+    },
+    "1423": {
+        "n": "1423",
+        "d": "A flipped coin is more likely to land on the side it started on."
+    },
+    "1425": {
+        "n": "1425",
+        "d": "Mosquitoes prefer to bite people with Type O blood."
+    },
+    "1430": {
+        "n": "1430",
+        "d": "Mountain lions can whistle."
+    },
+    "1432": {
+        "n": "1432",
+        "d": "When a koala is born, it is about the size of a jelly bean."
+    },
+    "1433": {
+        "n": "1433",
+        "d": "Toe wrestling is a competitive sport."
+    },
+    "1441": {
+        "n": "1441",
+        "d": "A caterpillar has more muscles than a human."
+    },
+    "1442": {
+        "n": "1442",
+        "d": "A shrimp's heart is in its head."
+    },
+    "1447": {
+        "n": "1447",
+        "d": "Water can boil and freeze at the same time."
+    },
+    "1449": {
+        "n": "1449",
+        "d": "Peanut butter can be converted into diamonds."
+    },
+    "1450": {
+        "n": "1450",
+        "d": "Astronauts can't burp in space."
+    },
+    "1453": {
+        "n": "1453",
+        "d": "Yawns are contagious to dogs as well as humans."
+    },
+    "1454": {
+        "n": "1454",
+        "d": "Acoustic Kitty was once a cat in training to be a spy."
+    },
+    "1474": {
+        "n": "1474",
+        "d": "The spiral shapes of sunflowers follow the Fibonacci sequence."
+    },
+    "1508": {
+        "n": "1508",
+        "d": "Silly String was originally designed to be a spray on cast for broken bones."
+    },
+    "1509": {
+        "n": "1509",
+        "d": "An avocado is actually a large berry."
+    },
+    "1510": {
+        "n": "1510",
+        "d": "There are more trees on Earth than stars in the Milky Way galaxy."
+    },
+    "1511": {
+        "n": "1511",
+        "d": "It is impossible to sneeze while you are sleeping."
+    },
+    "1512": {
+        "n": "1512",
+        "d": "The Cookie Monster's real first name is Sid."
+    },
+    "1514": {
+        "n": "1514",
+        "d": "In Japan, letting a sumo wrestler make your baby cry is considered good luck."
+    },
+    "1516": {
+        "n": "1516",
+        "d": "Scotland has 421 words for snow."
+    },
+    "1519": {
+        "n": "1519",
+        "d": "Octopuses think with their tentacles."
+    },
+    "1520": {
+        "n": "1520",
+        "d": "\"Jingle Bells\" was originally written for Thanksgiving."
+    },
+    "1521": {
+        "n": "1521",
+        "d": "The 100 folds in a chef's hat represent the 100 ways to cook an egg."
+    },
+    "1522": {
+        "n": "1522",
+        "d": "Some cats are allergic to humans.",
+        "f": true
+    },
+    "1525": {
+        "n": "1525",
+        "d": "The tiny pocket in jeans was made for pocket watches.",
+        "f": true
+    },
+    "1536": {
+        "n": "1536",
+        "d": "Two of Snapple\u2019s founders were window washers in Brooklyn."
+    },
+    "1537": {
+        "n": "1537",
+        "d": "One of Snapple\u2019s original founders ran a sardine and pickle store in Queens with his family."
+    },
+    "1547": {
+        "n": "1547",
+        "d": "The Snapple name combines the words Snappy and Apple."
+    },
+    "1550": {
+        "n": "1550",
+        "d": "Ants won\u2019t cross a chalk line."
+    },
+    "1551": {
+        "n": "1551",
+        "d": "Mangos are related to cashews and pistachios."
+    },
+    "1552": {
+        "n": "1552",
+        "d": "Banana trees are actually herbs."
+    },
+    "1553": {
+        "n": "1553",
+        "d": "\"Donut Towns\" are towns that are completely surrounded by other towns."
+    },
+    "1554": {
+        "n": "1554",
+        "d": "Arachibutyrophobia is the fear of getting peanut butter stuck to the roof of your mouth."
+    },
+    "1555": {
+        "n": "1555",
+        "d": "Both green and black tea come from leaves of the same tree."
+    },
+    "1560": {
+        "n": "1560",
+        "d": "You can start a fire with ice."
+    },
+    "1561": {
+        "n": "1561",
+        "d": "The fire hydrant patent was ironically destroyed in a fire."
+    },
+    "1562": {
+        "n": "1562",
+        "d": "Cotton can catch fire with enough super glue applied."
+    },
+    "1563": {
+        "n": "1563",
+        "d": "Blue flames are the hottest, reaching temps up to 3,000 degrees Celsius."
+    },
+    "1564": {
+        "n": "1564",
+        "d": "Large rain drops can fall at speeds of 20 mph."
+    },
+    "1565": {
+        "n": "1565",
+        "d": "Phantom rain are raindrops that never reach the ground."
+    },
+    "1566": {
+        "n": "1566",
+        "d": "A fire will burn faster moving uphill than downhill."
+    },
+    "1567": {
+        "n": "1567",
+        "d": "Air's alchemy symbol is a triangle with a horizontal bar."
+    },
+    "1568": {
+        "n": "1568",
+        "d": "Fire's alchemy symbol is a triangle, resembling a campfire."
+    },
+    "1569": {
+        "n": "1569",
+        "d": "The alchemy symbol for water is an inverted triangle, resembling a cup or glass."
+    },
+    "1570": {
+        "n": "1570",
+        "d": "No rain fell in Iquique, Chile, for 14 years."
+    },
+    "1571": {
+        "n": "1571",
+        "d": "Denver sits at 5,280 feet elevation (1 mile above sea level)."
+    },
+    "1572": {
+        "n": "1572",
+        "d": "Commercial airplanes maintain a cabin pressure of about 6,400 feet (just over 1 mile) above sea level."
+    },
+    "1573": {
+        "n": "1573",
+        "d": "Earth is the only known planet where fire occurs."
+    },
+    "1574": {
+        "n": "1574",
+        "d": "Every minute about a billion tons of water falls on Earth."
+    },
+    "1575": {
+        "n": "1575",
+        "d": "Oxygen supply influences the color of a fire's flame."
+    },
+    "1576": {
+        "n": "1576",
+        "d": "Wind moves air from high to low pressure areas."
+    },
+    "1577": {
+        "n": "1577",
+        "d": "About 1\/3 of your taste buds are numbed while flying."
+    },
+    "1578": {
+        "n": "1578",
+        "d": "Even with wings, humans would be unable to fly."
+    },
+    "1579": {
+        "n": "1579",
+        "d": "The average raindrop takes 2 minutes to hit the ground."
+    },
+    "1580": {
+        "n": "1580",
+        "d": "Ocean algae produces about 75 percent of the world's oxygen."
+    },
+    "1581": {
+        "n": "1581",
+        "d": "Flightless birds, like the penguin, could once fly."
+    },
+    "1582": {
+        "n": "1582",
+        "d": "A very small raindrop can travel up to 7 minutes from the sky before reaching you."
+    },
+    "1583": {
+        "n": "1583",
+        "d": "Pressurized plane cabin air is the same average humidity of the Sahara Desert."
+    },
+    "1584": {
+        "n": "1584",
+        "d": "Sound travels about 4 times faster in water than in air."
+    },
+    "1585": {
+        "n": "1585",
+        "d": "The air signs are Gemini, Libra, and Aquarius."
+    },
+    "1586": {
+        "n": "1586",
+        "d": "The first hot air balloon passengers were a sheep, duck, and rooster."
+    },
+    "1587": {
+        "n": "1587",
+        "d": "Earth's sky is purple, our eyes just see it as blue."
+    },
+    "1588": {
+        "n": "1588",
+        "d": "The fire signs are Aries, Leo, and Sagittarius."
+    },
+    "1589": {
+        "n": "1589",
+        "d": "A bolt of lightning can reach roughly 50,000 degrees Fahrenheit."
+    },
+    "1590": {
+        "n": "1590",
+        "d": "Humans can encourage precipitation with cloud seeding."
+    },
+    "1591": {
+        "n": "1591",
+        "d": "The familiar smell of rain is called petrichor."
+    },
+    "1592": {
+        "n": "1592",
+        "d": "The average raindrop weighs less than an eyelash."
+    },
+    "1593": {
+        "n": "1593",
+        "d": "The water signs are Cancer, Scorpio, and Pisces."
+    },
+    "1594": {
+        "n": "1594",
+        "d": "Heavy raindrops are shaped like hamburger buns."
+    },
+    "1595": {
+        "n": "1595",
+        "d": "Kangaroos cannot jump without their tails touching the ground."
+    },
+    "1596": {
+        "n": "1596",
+        "d": "Birds can sleep with one eye open."
+    },
+    "1597": {
+        "n": "1597",
+        "d": "A human being could swim through the blood vessels of a blue whale."
+    },
+    "1598": {
+        "n": "1598",
+        "d": "Elevenses is a break for light refreshments taken at 11AM in England."
+    },
+    "1599": {
+        "n": "1599",
+        "d": "A man once ate an entire airplane\u2014it took him 2 years."
+    },
+    "1600": {
+        "n": "1600",
+        "d": "The longest alphabet has 74 letters."
+    },
+    "1601": {
+        "n": "1601",
+        "d": "A species of moth has the best hearing in the world."
+    },
+    "1602": {
+        "n": "1602",
+        "d": "In 2015, the Oxford word of the year was the tears of joy emoji."
+    },
+    "1603": {
+        "n": "1603",
+        "d": "\"just setting up my twttr\" was the first ever tweet."
+    },
+    "1604": {
+        "n": "1604",
+        "d": "Tomatoes are considered both fruits and vegetables\u2014the answer depends on whom you ask."
+    },
+    "1605": {
+        "n": "1605",
+        "d": "A suction cup will not work in outer space."
+    },
+    "1606": {
+        "n": "1606",
+        "d": "Before emojis, there were emoticons, which are icons created from keyboard characters."
+    },
+    "1607": {
+        "n": "1607",
+        "d": "In the 1800s, Cadbury created the first heart-shaped chocolate box."
+    },
+    "1608": {
+        "n": "1608",
+        "d": "Early tales of leprechauns reported red clothing."
+    },
+    "1609": {
+        "n": "1609",
+        "d": "The color of a chicken's earlobe is a good indicator of the color of the eggshell it will lay."
+    },
+    "1610": {
+        "n": "1610",
+        "d": "The summer solstice marks the first day of summer and the longest day of the year."
+    },
+    "1611": {
+        "n": "1611",
+        "d": "The 50-star flag was designed for a high school class assignment."
+    },
+    "1612": {
+        "n": "1612",
+        "d": "Labor Day is the unofficial end of hot dog season."
+    },
+    "1613": {
+        "n": "1613",
+        "d": "Mistletoe is evergreen -even after a tree's leaves have fallen, it stays green."
+    },
+    "1614": {
+        "n": "1614",
+        "d": "An AA battery with no charge remaining will not bounce when dropped."
+    },
+    "1615": {
+        "n": "1615",
+        "d": "The collective name for a group of unicorns is called a blessing."
+    },
+    "1616": {
+        "n": "1616",
+        "d": "Sloths can hold their breath longer than dolphins can."
+    },
+    "1617": {
+        "n": "1617",
+        "d": "People don't sneeze in their sleep."
+    },
+    "1618": {
+        "n": "1618",
+        "d": "Platypuses are venomous."
+    },
+    "1619": {
+        "n": "1619",
+        "d": "Asparagus can grow up to 7 inches in a day."
+    },
+    "1620": {
+        "n": "1620",
+        "d": "There are over 2,500 apple varieties grown in the U.S."
+    },
+    "1621": {
+        "n": "1621",
+        "d": "You can tell what a narwhal has eaten each year based on the layers of its tusk."
+    },
+    "1624": {
+        "n": "1624",
+        "d": "The first flight traveled at less than 7 mph (ground speed)."
+    }
+}

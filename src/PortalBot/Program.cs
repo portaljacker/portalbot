@@ -3,7 +3,6 @@ namespace PortalBot;
 using Discord;
 using Discord.Interactions;
 using Discord.WebSocket;
-using Jurassic;
 using Microsoft.Extensions.DependencyInjection;
 using Models;
 using OpenWeatherMap.Cache.Extensions;
@@ -52,7 +51,6 @@ public class Program
             .AddOpenWeatherMapCache(openWeatherMapApiKey, 600_000, timeout: 2_000)
             .AddSingleton<WeatherProcessor>()
             .AddSingleton(new Dictionary<string, Fact>())
-            .AddSingleton(new ScriptEngine())
             .AddSingleton(new Random())
             .AddSingleton<FactProcessor>()
             .BuildServiceProvider();
