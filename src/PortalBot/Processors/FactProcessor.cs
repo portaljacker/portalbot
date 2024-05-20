@@ -31,7 +31,7 @@ public class FactProcessor
     {
         var web = new HtmlWeb();
         var doc = web.Load(FactUriStem);
-        var script = doc.DocumentNode.SelectNodes("//script")
+        var script = doc.DocumentNode.Descendants("script")
             .FirstOrDefault(n =>
                 n.InnerText
                 .Contains("pageData"))?.InnerText;
