@@ -22,7 +22,8 @@ public class FactProcessor
 
     private void LoadFacts()
     {
-        var json = File.ReadAllText("Data/realFacts.json");
+        var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data/realFacts.json");
+        var json = File.ReadAllText(path);
 
         if (string.IsNullOrWhiteSpace(json))
         {
